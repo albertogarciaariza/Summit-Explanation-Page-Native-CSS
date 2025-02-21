@@ -1,0 +1,10 @@
+.screen--1 {
+    background-color: red;
+}
+.screen--2{
+    background-color: green;
+    animation: slide-up scroll ease-in-out infinite;
+}
+.screen--3{
+    background-color: blue;
+}

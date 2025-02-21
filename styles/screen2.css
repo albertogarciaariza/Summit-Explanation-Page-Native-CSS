@@ -1,0 +1,33 @@
+#screen2 {
+    height: 500vh;
+    overflow: visible; // we need this to make sitcky work
+
+    view-timeline-name: --section-pin-tl;
+    view-timeline-axis: block;
+}
+
+.screen__sticky {
+    position: sticky;
+    top: 0;
+    outline: 2px solid yellow;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: clip;
+}
+
+.screen__h-strip {
+    height: 100vh;
+    width: 250vmax;
+
+    animation: move linear forwards;
+    animation-timeline: --section-pin-tl;
+    animation-range: contain 0% contain 100%;
+
+    background: linear-gradient(to left, red, blue);
+}
+
+@keyframes move {
+    to {
+        transform: translateX(calc(-100% + 100vw));
+    }
+}
