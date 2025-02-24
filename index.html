@@ -127,7 +127,7 @@
             height: auto;
         }
 
-		/* Second Section */
+		/* Section 2 *****************************************************************************/
 		/* #section2 {
 			position: relative;
 			overflow: hidden;
@@ -194,6 +194,7 @@
 			opacity: 1 !important;
 		}
 
+		/* Section 3 *****************************************************************************/
 		/* Initially hide section 3 */
 		#section3 {
 			opacity: 0;
@@ -250,7 +251,7 @@
 			margin-bottom: 0;
 		}
 
-		/* Section 4*/
+		/* Section 4 *****************************************************************************/
 
 		#section4 {
         display: none;
@@ -315,7 +316,7 @@
 		}
 
 
-		/* Section 5*/
+		/* Section 5 *****************************************************************************/
 
 		#section5 {
 			display: none;
@@ -342,8 +343,12 @@
 		.gif {
 			max-width: 80%; /* Adjust size */
 			height: auto;
-			opacity: 0;
-			transition: opacity 1s ease-in;
+			animation: playOnce 3s forwards; /* Adjust the duration (3s) as needed */
+		}
+
+		@keyframes playOnce {
+			0% { opacity: 0; }
+			100% { opacity: 1; } /* Fade in the GIF and leave it visible */
 		}
 
 		.gif.visible {
@@ -362,7 +367,7 @@
 		}
 
 
-		/* Section 6*/
+		/* Section 6*****************************************************************************/
 
 		#section6 {
 			display: none;
@@ -380,7 +385,7 @@
 			opacity: 1;
 		}
 
-		/* Section 7*/
+		/* Section 7 *****************************************************************************/
 
 		#section7 {
 			display: none;
@@ -397,6 +402,81 @@
 			display: flex !important;
 			opacity: 1;
 		}
+
+		/* Section 8 *****************************************************************************/
+
+		#section8 .content {
+			text-align: center;
+			margin-top: 100px;
+		}
+
+		/* Fade-in effect for Section 8 */
+		#section8 .fade-in {
+			opacity: 0;
+			transition: opacity 1.8s ease-in;
+		}
+
+		#section8.active .fade-in {
+			opacity: 1;
+		}
+
+		/* Section 9 ***********************************************************************************************/
+
+		#section9 {
+			position: relative;
+			height: 100vh; /* Adjust to the height you want */
+			overflow: hidden;
+			display: none;  /* Initially hide the section */
+		}
+
+		#section9.active {
+			display: block;  /* Show section when active */
+		}
+
+		/* Video background */
+		.video-background {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1; /* Places the video behind other content */
+		}
+
+		#video-background {
+			object-fit: cover; /* Ensures video covers the entire section */
+			width: 100%;
+			height: 100%;
+		}
+
+		/* Overlay that appears after 2 seconds */
+		.overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+			opacity: 0;
+			transition: opacity 2s ease-in-out;
+		}
+
+		/* Centered white text */
+		.centered-text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 100%;
+			transform: translate(-50%, -50%);
+			font-family: 'Gellix', sans-serif;
+			font-weight: 400;
+			font-size: 84px;
+			line-height: 85px;
+			color: white;
+			z-index: 1; /* Ensures the text is in front of the overlay */
+			opacity: 0; /* Start hidden */
+			transition: opacity 1s ease-in-out; /* Smooth transition for fading */
+			}
 
 		/* Typing animation*/
 
@@ -538,7 +618,7 @@
 				</span>
 			</h2>
 			<div class="gif-container">
-				<img src="agency-model.gif" alt="Animated GIF" class="gif">
+				<img src="Animated-GIF-3.gif" alt="Animated GIF" class="gif">
 			</div>
 		</div>
 	</section>
@@ -548,15 +628,48 @@
 		<div class="content-wrapper">
 			<h2 class="typing-container header-font">
 				<span class="typing-text">
-					<span class="black-text">to an ​</span> 
+					<span class="black-text">to an ​</span>
 					<span class="blue-text">​Agentic Model</span>
 				</span>
 			</h2>
 			<div class="gif-container">
-				<img src="agency-model.gif" alt="Animated GIF" class="gif">
+				<img src="Animated-GIF-4.gif" alt="Animated GIF" class="gif">
 			</div>
 		</div>
 	</section>
+
+	<!-- Section 8 -->
+    <section id="section8" class="section">
+        <div class="content">
+			<h2 class="typing-container header-font text-block">
+				<span>
+					<span class="blue-text">AI Empowerment:​</span> 
+					<span class="black-text">​The Next <br>Era of Value Creation​</span>
+				</span>
+			</h2>
+			<div class="fade-in" id="scroll-content">
+                <p class="second-text">To stay relevant and resilient, organizations must blend advanced technology with human insight,
+                    <br>leveraging AI as a collaborative partner while keeping people at the core. This synergy drives adaptability
+				    <br> and future success.
+				</p>
+            </div>
+        </div>
+    </section>
+
+	<!-- Section 9 -->
+	<section id="section9" class="section">
+		<div class="video-background">
+			<video autoplay muted loop id="video-background">
+				<source src="ocean.mp4" type="video/mp4">
+			</video>
+			<div class="overlay"></div>
+		</div>
+		<div class="content-wrapper">
+			<h2 class="centered-text">AI Empowerment: ​The Next <br>Era of Value Creation​</h2>
+		</div>
+	</section>
+	
+	
 	
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
@@ -702,6 +815,50 @@
 					}, 1500);
 				}
 			}
+		});
+
+		// Scroll event to show section 8
+		window.addEventListener('scroll', function() {
+			const section8 = document.getElementById('section8');
+			const section8Position = section8.getBoundingClientRect().top;
+			const windowHeight = window.innerHeight;
+
+			// Fade-in the content when Section 8 is in the viewport
+			if (section8Position < windowHeight * 0.8) { // When section 8 is near the viewport
+				section8.classList.add('active');
+			}
+		});
+
+		document.querySelectorAll('.gif').forEach(function(gif) {
+			gif.addEventListener('load', function() {
+				// Once the GIF is loaded, it will play once, then reset
+				setTimeout(function() {
+				gif.style.opacity = 1; // Ensure the fade-in effect stays
+				gif.src = gif.src; // Reload the GIF to play it once
+				}, 3000); // Wait for the duration of the fade-in effect
+			});
+		});
+
+		// Section 9
+
+		window.addEventListener('scroll', function() {
+			const section9 = document.getElementById('section9');
+			const section9Position = section8.getBoundingClientRect().top;
+			const windowHeight = window.innerHeight;
+
+			// Fade-in the content when Section 8 is in the viewport
+			if (section9Position < windowHeight * 0.1) { // When section 8 is near the viewport
+				section9.classList.add('active');
+			}
+			setTimeout(() => {
+						const overlay = section9.querySelector('.overlay');
+						overlay.style.opacity = 1;  // Fade in the overlay
+					}, 1000);
+				// Wait for the overlay to finish, then show the text
+			
+			setTimeout(function() {
+				document.querySelector('.centered-text').style.opacity = 1;
+				}, 2000); // Delay of 1 second (adjust as necessary)
 		});
 
 	</script>
