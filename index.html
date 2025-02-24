@@ -275,6 +275,11 @@
 			transition: opacity 1s ease-in;
 		}
 
+		.header-font {
+			font-size: 48px;
+			font-weight: bold;
+		}
+
 		.black-text {
 			color: black;
 		}
@@ -356,12 +361,78 @@
 			opacity: 1 !important;
 		}
 
+
+		/* Section 6*/
+
+		#section6 {
+			display: none;
+			opacity: 0;
+			transition: opacity 1s ease-in;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			text-align: center;
+		}
+
+		#section6.active {
+			display: flex !important;
+			opacity: 1;
+		}
+
+		/* Section 7*/
+
+		#section7 {
+			display: none;
+			opacity: 0;
+			transition: opacity 1s ease-in;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			text-align: center;
+		}
+
+		#section7.active {
+			display: flex !important;
+			opacity: 1;
+		}
+
+		/* Typing animation*/
+
+		.typing-container {
+			display: inline-block;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		.typing-text {
+			display: inline-block;
+			opacity: 0; /* Initially hidden */
+		}
+
+		.typing-container.active .typing-text {
+			animation: typing 1.5s steps(20) forwards;
+		}
+
+		@keyframes typing {
+			from {
+				width: 0;
+				opacity: 1;
+			}
+			to {
+				width: 100%;
+				opacity: 1;
+			}
+		}
+
     </style>
 </head>
 <body>
     <!-- Logo added at the top-left corner -->
     <img src="Logo.png" alt="Logo" id="logo">
 
+	<!-- Section 1 -->
     <section id="section1" class="section">
         <video autoplay loop muted>
             <source src="background.mov" type="video/mp4">
@@ -378,6 +449,8 @@
             </button>
         </div>
     </section>
+
+	<!-- Section 2 -->
 	<section id="section2" class="section">
         <video autoplay loop muted>
             <source src="second-section-video.mov" type="video/mp4">
@@ -390,6 +463,7 @@
         </div>
     </section>
 
+	<!-- Section 3 -->
 	<section id="section3" class="section">
 		<div class="content-container">
 			<div class="text-container">	
@@ -415,6 +489,7 @@
 		</div>
 	</section>
 	
+	<!-- Section 4 -->
 	<section id="section4" class="section sectionHeight">
 		<div class="content-wrapper">
 			<h2 class="fade-text">
@@ -438,18 +513,50 @@
 		</div>
 	</section>
 
+	<!-- Section 5 -->
 	<section id="section5" class="section sectionHeight">
 		<div class="content-wrapper">
-			<h2 class="fade-text">
-				<span class="black-text">From</span> 
-				<span class="blue-text">Labor Arbitrage</span>
+			<h2 class="typing-container header-font">
+				<span class="typing-text">
+					<span class="black-text">to</span> 
+					<span class="blue-text">AI Arbitrage</span>
+				</span>
 			</h2>
 			<div class="gif-container">
 				<img src="brain.gif" alt="Animated GIF" class="gif">
 			</div>
 		</div>
 	</section>
-	
+
+    <!-- Section 6 -->
+	<section id="section6" class="section">
+		<div class="content-wrapper">
+			<h2 class="typing-container header-font">
+				<span class="typing-text">
+					<span class="black-text">From an</span> 
+					<span class="blue-text">Agency Model</span>
+				</span>
+			</h2>
+			<div class="gif-container">
+				<img src="agency-model.gif" alt="Animated GIF" class="gif">
+			</div>
+		</div>
+	</section>
+
+	<!-- Section 7 -->
+	<section id="section7" class="section">
+		<div class="content-wrapper">
+			<h2 class="typing-container header-font">
+				<span class="typing-text">
+					<span class="black-text">to an ​</span> 
+					<span class="blue-text">​Agentic Model</span>
+				</span>
+			</h2>
+			<div class="gif-container">
+				<img src="agency-model.gif" alt="Animated GIF" class="gif">
+			</div>
+		</div>
+	</section>
 	
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
@@ -536,15 +643,63 @@
 					section5.style.display = "flex"; 
 					section5.style.opacity = "1"; 
 
-					// Fade in text
+					// Activate typing effect for Section 5
 					setTimeout(() => {
-						document.querySelector("#section5 .fade-text").classList.add("visible");
+						document.querySelector("#section5 .typing-container").classList.add("active");
 					}, 200);
 
 					// Show GIF with delay
 					setTimeout(() => {
 						document.querySelector("#section5 .gif").classList.add("visible");
 					}, 500);
+				}
+			}
+		});
+
+		// Scroll event to show section 6
+		window.addEventListener("scroll", function () {
+			const section5Bottom = section5.getBoundingClientRect().bottom;
+			const windowHeight = window.innerHeight;
+
+			if (section5Bottom < windowHeight * 0.3) { 
+				if (!section6.classList.contains("active")) {
+					section6.classList.add("active"); 
+					section6.style.display = "flex"; 
+					section6.style.opacity = "1"; 
+
+					// Activate typing effect
+					setTimeout(() => {
+						document.querySelector("#section6 .typing-container").classList.add("active");
+					}, 500);
+
+					// Show GIF with delay
+					setTimeout(() => {
+						document.querySelector("#section6 .gif").classList.add("visible");
+					}, 1500);
+				}
+			}
+		});
+
+		// Scroll event to show section 7
+		window.addEventListener("scroll", function () {
+			const section5Bottom = section6.getBoundingClientRect().bottom;
+			const windowHeight = window.innerHeight;
+
+			if (section5Bottom < windowHeight * 0.3) { 
+				if (!section7.classList.contains("active")) {
+					section7.classList.add("active"); 
+					section7.style.display = "flex"; 
+					section7.style.opacity = "1"; 
+
+					// Activate typing effect
+					setTimeout(() => {
+						document.querySelector("#section7 .typing-container").classList.add("active");
+					}, 500);
+
+					// Show GIF with delay
+					setTimeout(() => {
+						document.querySelector("#section7 .gif").classList.add("visible");
+					}, 1500);
 				}
 			}
 		});
