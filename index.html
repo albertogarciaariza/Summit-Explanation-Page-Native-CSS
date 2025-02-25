@@ -51,13 +51,21 @@
         }
 
         /* Style for the second text */
-        .second-text {
+        .second-text,  .text-top, .bottom-text {
             font-family: 'Gellix', sans-serif;  /* Use Gellix font */
             font-weight: 400;
             line-height: 26px;
             color: #000048; /* You can adjust this color if needed */
             font-size: 18px;  /* Adjust the font size */
         }
+
+		.title-font, .bottom-title {
+			font-family: 'Gellix', sans-serif;  /* Use Gellix font */
+            font-weight: 400;
+            line-height: 33px;
+            color: #000048; /* You can adjust this color if needed */
+            font-size: 27px;
+		}
 
         .fade-in {
             opacity: 0;
@@ -478,6 +486,173 @@
 			transition: opacity 1s ease-in-out; /* Smooth transition for fading */
 			}
 
+		/* Section 10 ************************************************************************************/
+
+		#section10 {
+			opacity: 0;
+			transform: translateX(100%); /* Start off-screen (right) */
+			transition: transform 1s ease-out, opacity 1s ease-out;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 100vh;
+			background-color: white;
+			padding: 50px;
+		}
+
+		/* Make section 3 appear when active */
+		#section10.active {
+			opacity: 1;
+			transform: translateX(0); /* Moves in from right */
+		}
+
+		/* Section 3 layout: Left = text, Right = image */
+		#section10 .content-container {
+			display: flex;
+			max-width: 1200px;
+		}
+
+		#section10 .text-container {
+			flex: 1;
+			padding: 20px;
+		}
+
+		#section10 .image-container {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#section10 img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 10px;
+		}
+
+		/* Section 11 */
+
+		/* Section 11 */
+		.section11 {
+			background-color: #000048; /* Dark blue background */
+			padding: 100px 0;
+			text-align: center;
+			color: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			opacity: 0;
+			transition: opacity 1s ease-in-out;
+		}
+
+		.section11 .content-container {
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		.section11 .fade-text {
+			font-size: 2rem;
+			opacity: 0; /* Initially hidden */
+			transition: opacity 2s ease-in-out;
+		}
+
+		.white-text {
+			color: white;
+		}
+
+		.open-blue-text {
+			color: #3ACFE8;
+		}
+
+		.section11.active .fade-text {
+			opacity: 1; /* Fade in text */
+		}
+
+		/* Section 12 ** Carousel ***************************************************************************/
+		#carousel {
+			overflow-y: auto;
+			display: flex;
+			flex-direction: column;
+			scroll-snap-type: y mandatory;
+			-webkit-overflow-scrolling: touch;
+			height: 100vh;
+		}
+
+		.carousel-item {
+			scroll-snap-align: center;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			color: #fff;
+			font-size: 20px;
+			width: 100%;
+		}
+
+		.carousel-text {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			padding: 40px;
+			font-size: 24px;
+			height: 100%;
+		}
+
+		.text-top, .text-bottom {
+			max-width: 250px;
+			text-align: left;
+		}
+
+		.bottom-text {
+			margin-top: 20px;
+		}
+
+		.carousel-image {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.carousel-image img {
+			max-width: 100%;
+			max-height: 100%;
+			object-fit: cover;
+		}
+
+		.numbered-list-text {
+			font-family: 'Gellix', sans-serif;  /* Use Gellix font */
+            font-weight: 400;
+            line-height: 20px;
+            color: #000048; /* You can adjust this color if needed */
+            font-size: 15px;
+			text-align: left;
+			margin-left: -35px;
+		}
+
+		.numbered-list-text-highlighted {
+			color: #2F78C4;
+		}
+
+		ol {
+			list-style-type: none; /* Remove default numbers */
+			counter-reset: list-counter; /* Initialize a counter for the list items */
+		}
+
+		ol li {
+			counter-increment: list-counter; /* Increment the counter for each list item */
+		}
+
+		ol li::before {
+			content: counter(list-counter, decimal-leading-zero) ". "; /* Format the counter with leading zero */
+		}
+
+		/* Sections **************************************************^*/
+
 		/* Typing animation*/
 
 		.typing-container {
@@ -668,8 +843,161 @@
 			<h2 class="centered-text">AI Empowerment: ​The Next <br>Era of Value Creation​</h2>
 		</div>
 	</section>
+
+	<!-- Section 10 -->
+	<section id="section10" class="section">
+		<div class="content-container">
+			<div class="text-container">	
+				<div class="text-block">
+					<h3>Future Teams Unite Human and AI​</h3>
+					<p class="second-text">Cross-functional roles, ethical AI committees, and AI team members – virtual ‘employees’ providing real-time insights, project suggestions, and automated reports – blend seamlessly with human colleagues to drive innovation, sustainability, and culturally adaptive solutions.​</p>
+				</div>
 	
+				<div class="text-block">
+					<h3>Foster Ecosystems and Innovation​</h3>
+					<p class="second-text">Future teams will partner closely with clients through real-time simulations, predictive modeling, and collaborative co-creation spaces. Their focus will extend beyond individual projects, emphasizing the development of long-term ecosystems that enable continuous innovation and iterative improvements.​</p>
+				</div>
 	
+				<div class="text-block">
+					<h3>Support continuous innovation​</h3>
+					<p class="second-text">Organizations leverage generative AI, predictive analytics, and immersive tools to streamline ideation, development, and optimization, enhancing efficiency and creativity. A human-in-the-loop ensures empathy and inclusivity, while AI tools deliver accessible, culturally resonant products for diverse user needs.</p>
+				</div>
+			</div>
+	
+			<div class="image-container">
+				<img src="assets/standbild.jpg" alt="AI Collaboration">
+			</div>
+		</div>
+	</section>
+
+	<!-- Section 11 -->
+	<section id="section11" class="section section11">
+		<div class="content-container">
+			<h2 class="fade-text">
+				<span class="white-text">Unlock the Power of Synergy with the</span> 
+				<span class="open-blue-text">Agentic Operation Model</span>
+			</h2>
+		</div>
+	</section>
+
+	
+	<!-- Section 12 - Carousel ***************** -->
+	<div id="carousel" class="snap vertical">
+		<div id="carousel-1" class="carousel-item">
+		  <div class="carousel-text">
+			<div class="text-top">
+			  <ol class="numbered-list-text">
+				<li class="numbered-list-text-highlighted">Efficiency & Focus</li>
+				<li>Scalability & Adaptability</li>
+				<li>Innovation</li>
+				<li>Collaboration</li>
+				<li>Inclusion & Cultural Adaption</li>
+				<li>Future Strategies</li>
+			  </ol>
+			</div>
+			<div class="text-bottom">
+			  <div class="bottom-title">Enhanced Efficiency and Focus</div>
+			  <div class="bottom-text">Automating repetitive tasks with AI agents allows individuals and teams to concentrate on high-value, strategic activities, boosting productivity and decision-making speed.</div>
+			</div>
+		  </div>
+		  <div class="carousel-image"><img src="assets/carousel1.png" alt="Image 1"></div>
+		</div>
+		<div id="carousel-2" class="carousel-item">
+		  <div class="carousel-text">
+			<div class="text-top">
+			  <ol class="numbered-list-text">
+				<li>Efficiency & Focus</li>
+				<li class="numbered-list-text-highlighted">Scalability & Adaptability</li>
+				<li>Innovation</li>
+				<li>Collaboration</li>
+				<li>Inclusion & Cultural Adaption</li>
+				<li>Future Strategies</li>
+			  </ol>
+			</div>
+			<div class="text-bottom">
+			  <div class="bottom-title">Scalability and Adaptability</div>
+			  <div class="bottom-text">The Agentic Model enables organizations to scale processes seamlessly and adapt to evolving business landscapes with AI-driven workflows.</div>
+			</div>
+		  </div>
+		  <div class="carousel-image"><img src="assets/carousel2.png" alt="Image 2"></div>
+		</div>
+		<div id="carousel-3" class="carousel-item">
+		  <div class="carousel-text">
+			<div class="text-top">
+			  <ol class="numbered-list-text">
+				<li>Efficiency & Focus</li>
+				<li>Scalability & Adaptability</li>
+				<li class="numbered-list-text-highlighted">Innovation</li>
+				<li>Collaboration</li>
+				<li>Inclusion & Cultural Adaption</li>
+				<li>Future Strategies</li>
+			  </ol>
+			</div>
+			<div class="text-bottom">
+			  <div class="bottom-title">Continuous Innovation</div>
+			  <div class="bottom-text">AI-powered tools ensure a steady flow of ideas, faster prototyping, and smarter optimization, allowing businesses to maintain a competitive edge in rapidly changing markets.</div>
+			</div>
+		  </div>
+		  <div class="carousel-image"><img src="assets/carousel3.png" alt="Image 3"></div>
+		</div>
+		<div id="carousel-4" class="carousel-item">
+		  <div class="carousel-text">
+			<div class="text-top">
+			  <ol class="numbered-list-text">
+				<li>Efficiency & Focus</li>
+				<li>Scalability & Adaptability</li>
+				<li>Innovation</li>
+				<li class="numbered-list-text-highlighted">Collaboration</li>
+				<li>Inclusion & Cultural Adaption</li>
+				<li>Future Strategies</li>
+			  </ol>
+			</div>
+			<div class="text-bottom">
+			  <div class="bottom-title">Improved Collaboration</div>
+			  <div class="bottom-text">By integrating human insight with AI capabilities, teams achieve new levels of creativity and innovation, driving sustainable value creation.</div>
+			</div>
+		  </div>
+		  <div class="carousel-image"><img src="assets/carousel4.png" alt="Image 4"></div>
+		</div>
+		<div id="carousel-5" class="carousel-item">
+		  <div class="carousel-text">
+			<div class="text-top">
+			  <ol class="numbered-list-text">
+				<li>Efficiency & Focus</li>
+				<li>Scalability & Adaptability</li>
+				<li>Innovation</li>
+				<li>Collaboration</li>
+				<li class="numbered-list-text-highlighted">Inclusion & Cultural Adaption</li>
+				<li>Future Strategies</li>
+			  </ol>
+			</div>
+			<div class="text-bottom">
+			  <div class="bottom-title">Culturally Relevant and Inclusive Solutions</div>
+			  <div class="bottom-text">AI tools trained on diverse datasets help businesses deliver inclusive, culturally adaptive products that resonate with a broad range of audiences.</div>
+			</div>
+		  </div>
+		  <div class="carousel-image"><img src="assets/carousel5.png" alt="Image 5"></div>
+		</div>
+		<div id="carousel-6" class="carousel-item">
+		  <div class="carousel-text">
+			<div class="text-top">
+			  <ol class="numbered-list-text">
+				<li>Efficiency & Focus</li>
+				<li>Scalability & Adaptability</li>
+				<li>Innovation</li>
+				<li>Collaboration</li>
+				<li>Inclusion & Cultural Adaption</li>
+				<li class="numbered-list-text-highlighted">Future Strategies</li>
+			  </ol>
+			</div>
+			<div class="text-bottom">
+			  <div class="bottom-title">Future-Proof Strategies</div>
+			  <div class="bottom-text">The Agentic Model prepares organizations for long-term success by blending technology with human expertise, ensuring resilience in a rapidly transforming digital world.</div>
+			</div>
+		  </div>
+		  <div class="carousel-image"><img src="assets/carousel6.png" alt="Image 6"></div>
+		</div>
+	</div>
 	
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
@@ -860,6 +1188,50 @@
 				document.querySelector('.centered-text').style.opacity = 1;
 				}, 2000); // Delay of 1 second (adjust as necessary)
 		});
+
+		// Section 10
+		window.addEventListener("scroll", function () {
+			const section9 = document.getElementById('section9');
+			const section10 = document.getElementById('section10');
+
+			if (!section9 || !section10) return; // Prevent errors if sections are missing
+
+			const section9Rect = section9.getBoundingClientRect();
+			const section10Rect = section10.getBoundingClientRect();
+			const windowHeight = window.innerHeight;
+
+			// Ensure Section 10 only activates when Section 9 has completely left the viewport
+			if (section9Rect.top < -section9Rect.height * 0.5) { 
+				if (!section10.classList.contains("active")) {
+					section10.classList.add("active"); 
+					section10.style.display = "block"; 
+					section10.style.opacity = "1"; 
+
+					// Animate the text if needed
+					setTimeout(() => {
+						const fadeText = document.querySelector("#section10 .text-container");
+						if (fadeText) {
+							fadeText.style.opacity = "1";
+						}
+					}, 500);
+				}
+			}
+		});
+
+		// Section 11
+
+		window.addEventListener("scroll", function () {
+			const section11 = document.getElementById('section11');
+			const section11Position = section10.getBoundingClientRect().top;
+
+			if (section11Position < window.innerHeight * 0.1) { 
+				if (!section11.classList.contains("active")) {
+					section11.classList.add("active"); 
+					section11.style.opacity = "1";  // Fade in section 11 when scrolled into view
+				}
+			}
+		});
+
 
 	</script>
 </body>
