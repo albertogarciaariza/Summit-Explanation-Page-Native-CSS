@@ -624,6 +624,10 @@
 			text-align: left;
 		}
 
+		.text-bottom-reverse {
+			flex-direction: column-reverse;
+		}
+
 		.bottom-text {
 			margin-top: 20px;
 		}
@@ -653,6 +657,62 @@
 
 		.numbered-list-text-highlighted {
 			color: #2F78C4;
+		}
+
+		.video-container {
+			position: relative;
+			width: 100%;
+			height: 100vh; /* Full screen height */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+		}
+
+		.video-container video {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.carousel-text-video {
+			position: absolute;
+			text-align: center;
+			color: white;
+			font-size: 2rem;
+			font-weight: bold;
+			z-index: 2;
+			bottom: 10%;
+		}
+
+		.text-highlight {
+			display: block;
+		}
+
+		.overlay-carousel {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+		}
+
+		#carousel-9, #carousel-8 {
+			min-height: 100vh;
+		}
+
+		.carousel-video {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 40px;
+			height: 100%;
+			background-color: #000048;
 		}
 
 		ol {
@@ -1023,6 +1083,83 @@
 			<div class="carousel-text carousel-text2">
 				<span class="white-text text-highlight">Shaping the</span> 
 				<span class="open-blue-text text-highlight">Preferable Future</span>
+			</div>
+		</div>
+
+		<div id="carousel-8" class="carousel-item">
+			<div class="carousel-text text-bottom-reverse">
+			  <div class="text-bottom">
+				<div class="bottom-text">In a world of rapidly evolving technologies, businesses must look beyond 
+					what is possible or plausible and focus on building the preferable future – one that empowers organizations, communities, and individuals. 
+					The Agentic Model embodies this vision, integrating human expertise with AI innovation to redefine work, strategy, and value creation.
+				</div>
+			  </div>
+			</div>
+			<!-- <div class="carousel-image carousel-bg-7">
+				<img src="futures-cone1.png" alt="Image 6">
+			</div> -->
+			<div class="carousel-image carousel-video">
+				<video autoplay loop muted>
+					<source src="assets/cone-1.mp4" type="video/mp4">
+				</video>
+			</div>
+		</div>
+
+		<div id="carousel-9" class="carousel-item">
+			<div class="carousel-text text-bottom-reverse">
+			  <div class="text-bottom">
+				<div class="bottom-text">
+					The Futures Cone shows us that the future isn’t fixed; it’s shaped by our actions today. Our preferable 
+					future is one where technology and human creativity work in harmony, enabling organizations to …
+				</div>
+			  </div>
+			</div>
+			<!-- <div class="carousel-image carousel-bg-7">
+				<img src="futures-cone1.png" alt="Image 6">
+			</div> -->
+			<div class="carousel-image carousel-video">
+				<video autoplay loop muted>
+					<source src="assets/cone-2.mp4" type="video/mp4">
+				</video>
+			</div>
+		</div>
+
+		<div id="carousel-10" class="carousel-item">
+			<div class="video-container">
+				<video autoplay loop muted width="1920" height="1080">
+					<source src="assets/bike-video.mp4" type="video/mp4">
+				</video>
+				<div class="overlay-carousel"></div>
+				<div class="carousel-text-video">
+					<span class="white-text text-highlight">Achieve sustainable</span>
+					<span class="open-blue-text text-highlight">innovation and long-term growth.</span>
+				</div>
+			</div>
+		</div>
+
+		<div id="carousel-11" class="carousel-item">
+			<div class="video-container">
+				<video autoplay loop muted width="1920" height="1080">
+					<source src="assets/parkour-video.mp4" type="video/mp4">
+				</video>
+				<div class="overlay-carousel"></div>
+				<div class="carousel-text-video">
+					<span class="white-text text-highlight">Empower teams with AI team members to</span>
+					<span class="open-blue-text text-highlight">amplify productivity and creativity.</span>
+				</div>
+			</div>
+		</div>
+
+		<div id="carousel-12" class="carousel-item">
+			<div class="video-container">
+				<video autoplay loop muted width="1920" height="1080">
+					<source src="assets/snowboard-video.mp4" type="video/mp4">
+				</video>
+				<div class="overlay-carousel"></div>
+				<div class="carousel-text-video">
+					<span class="white-text text-highlight">Build adaptable, resilient systems</span>
+					<span class="open-blue-text text-highlight">that thrive in an ever-changing landscape.</span>
+				</div>
 			</div>
 		</div>
 	</div>
