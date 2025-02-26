@@ -6,7 +6,10 @@
     <title>Animated Scroll Page</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; }
+        body { 
+			font-family: Arial, sans-serif;
+			scroll-behavior: smooth;
+		}
 
         .section {
             height: 100vh;
@@ -591,6 +594,18 @@
 			width: 100%;
 		}
 
+		.carousel-item-vertical {
+			scroll-snap-align: center;
+			display: flex;
+			flex-direction: column;
+			justify-content: end;
+			align-items: center;
+			text-align: center;
+			width: 100%;
+			min-height: 100vh;
+    		row-gap: 40px;
+		}
+
 		.carousel-text {
 			flex: 1;
 			display: flex;
@@ -715,6 +730,103 @@
 			background-color: #000048;
 		}
 
+		.carousel-last-section {
+			display: flex;
+			column-gap: 40px;
+		}
+
+		.last-section-title {
+			display: flex;
+			column-gap: 10px;
+		}
+
+		/* Horizontal Carousel Style*/
+		#carousel-13 {
+			width: 100vw;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+		}
+
+		#horizontal-carousel-container {
+			width: 100vw;
+			min-height: 100vh;
+			overflow-x: auto;
+			overflow-y: hidden;
+			scroll-snap-type: x mandatory;
+			display: flex;
+			flex-wrap: nowrap;
+		}
+
+		#horizontal-carousel {
+			display: flex;
+			width: 200vw;
+		}
+
+		.horizontal-container {
+			display: flex;
+			flex-direction: column;
+			row-gap: 20px;
+			align-items: center;
+		}
+
+		.horizontal-carousel-item {
+			width: 100vw;
+			height: 100vh;
+			scroll-snap-align: start;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-evenly;
+		}
+
+		.horizontal-last-section-title {
+			font-size: 32px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+
+		.horizontal-carousel-last-section {
+			display: flex;
+			gap: 50px;
+			align-items: center;
+		}
+
+		.horizontal-carousel-image img {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: auto;
+			border-radius: 10px;
+		}
+
+		.horizontal-last-section-image {
+			width: 25vw;
+		}
+
+		.last-section-container {
+			padding-inline: 10vw;
+		}
+
+		.arrow {
+			width: 80px;
+		}
+
+		.left-arrow-direction {
+			flex-flow: row-reverse;
+			margin-left: auto;
+		}
+
+		.right-arrow-direction {
+			margin-right: auto;
+		}
+		/* OrderedList Styles*/
+
 		ol {
 			list-style-type: none; /* Remove default numbers */
 			counter-reset: list-counter; /* Initialize a counter for the list items */
@@ -727,6 +839,8 @@
 		ol li::before {
 			content: counter(list-counter, decimal-leading-zero) ". "; /* Format the counter with leading zero */
 		}
+
+
 
 		/* Sections **************************************************^*/
 
@@ -945,20 +1059,17 @@
 			</div>
 		</div>
 	</section>
-
-	<!-- Section 11 -->
-	<section id="section11" class="section section11">
-		<div class="content-container">
-			<h2 class="fade-text">
-				<span class="white-text">Unlock the Power of Synergy with the</span> 
-				<span class="open-blue-text">Agentic Operation Model</span>
-			</h2>
-		</div>
-	</section>
-
 	
 	<!-- Section 12 - Carousel ***************** -->
 	<div id="carousel" class="snap vertical">
+
+		<div id="carousel-7" class="carousel-item carousel-bg-7">
+			<div class="carousel-text carousel-text2">
+				<span class="white-text text-highlight">Unlock the Power of Synergy with the</span>
+				<span class="open-blue-text text-highlight">the Agentic Operation Model</span>
+			</div>
+		</div>
+
 		<div id="carousel-1" class="carousel-item">
 		  <div class="carousel-text">
 			<div class="text-top">
@@ -1095,9 +1206,6 @@
 				</div>
 			  </div>
 			</div>
-			<!-- <div class="carousel-image carousel-bg-7">
-				<img src="futures-cone1.png" alt="Image 6">
-			</div> -->
 			<div class="carousel-image carousel-video">
 				<video autoplay loop muted>
 					<source src="assets/cone-1.mp4" type="video/mp4">
@@ -1114,9 +1222,6 @@
 				</div>
 			  </div>
 			</div>
-			<!-- <div class="carousel-image carousel-bg-7">
-				<img src="futures-cone1.png" alt="Image 6">
-			</div> -->
 			<div class="carousel-image carousel-video">
 				<video autoplay loop muted>
 					<source src="assets/cone-2.mp4" type="video/mp4">
@@ -1162,7 +1267,89 @@
 				</div>
 			</div>
 		</div>
+
+		<div id="carousel-13" class="carousel-item-vertical">
+			<!-- <div class="last-section-title">
+			  <span class="text-highlight">Take the </span>
+			  <span class="open-blue-text text-highlight">Next Step</span>  
+			</div>
+			<div class="carousel-last-section">
+			  <div class="carousel-image"><img src="assets/last-section-1.png" alt="Image 6"></div>
+			  <div class="carousel-image"><img src="assets/last-section-2.png" alt="Image 6"></div>
+			</div> -->
+
+			<div id="horizontal-carousel-container">
+				<div id="horizontal-carousel" class="horizontal-snap horizontal">
+				  <div class="horizontal-carousel-item" id="carousel-1">
+					<div class="last-section-title">
+					  <span class="text-highlight">Take the </span>
+					  <span class="open-blue-text text-highlight">Next Step</span>  
+					</div>
+		
+					<div class="horizontal-carousel-last-section last-section-container">
+					  <div class="horizontal-carousel-image horizontal-container">
+						<img class="horizontal-last-section-image" src="assets/last-section-1.png" alt="Image 1">
+						<p class="title-font">See the Agentic Model in Action</p>
+						<p class="second-text">Explore our Supply Chain Demo at the booth and discover how AI-powered collaboration transforms 
+							supply chain operations for greater efficiency and adaptability.</p>
+						<div class="horizontal-carousel-last-section right-arrow-direction">
+							<img class="arrow" src="assets/left-arrow.png" alt="Image 2">
+							<p>Explore the other screens</p>
+						</div>
+					  </div>
+					  <div class="horizontal-carousel-image horizontal-container">
+						<img class="horizontal-last-section-image" src="assets/last-section-2.png" alt="Image 2">
+						<p class="title-font">Discover Cognizant Neuro® Business Processes</p>
+						<p class="second-text">Find out how Cognizant Neuro® Business Processes simplifies and accelerates the adoption of automation 
+							and AI in the enterprise helping our clients deliver better experiences, more efficiently.
+						</p>
+						<div class="horizontal-carousel-last-section left-arrow-direction">
+							<img class="arrow" src="assets/right-arrow.png" alt="Image 2">
+							<p>Explore the other screens</p>
+						</div>
+					   </div>
+					</div>
+				  </div>
+		
+				  <div class="horizontal-carousel-item" id="carousel-1">
+					<div class="last-section-title">
+					  <span class="text-highlight">Take the </span>
+					  <span class="open-blue-text text-highlight">Next Step</span>  
+					</div>
+		
+					<div class="horizontal-carousel-last-section last-section-container">
+					  <div class="horizontal-carousel-image horizontal-container">
+						<img class="horizontal-last-section-image" src="assets/last-section-image-1.png" alt="Image 1">
+						<p class="title-font">Experience our smart Search <br>Solution for Seamless Conversations</p>
+						<p class="second-text">Experience how we enhance semantic search with an intelligent chatbot, 
+							delivering more intuitive and engaging interactions.</p>
+						<div class="horizontal-carousel-last-section right-arrow-direction">
+							<img class="arrow" src="assets/left-arrow.png" alt="Image 2">
+							<p>Explore the other screens</p>
+						</div>
+					  </div>
+					  <div class="horizontal-carousel-image horizontal-container">
+						<img class="horizontal-last-section-image" src="assets/last-section-image-2.png" alt="Image 2">
+						<p class="title-font">Unlock the Full Power of AEP</p>
+						<p class="second-text">Discover how our innovations enhance Adobe Experience Platform, 
+							unlocking new capabilities for data-driven experiences.
+						</p>
+						<div class="horizontal-carousel-last-section left-arrow-direction">
+							<img class="arrow" src="assets/right-arrow.png" alt="Image 2">
+							<p>Explore the other screens</p>
+						</div>
+					   </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+		</div>
 	</div>
+
+	
+	  
+
+
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
 			const scrollContent = document.getElementById("scroll-content");
@@ -1398,23 +1585,21 @@
 
 		// Section 12 - Carousel 7
 		document.addEventListener("DOMContentLoaded", function () {
-			const textElement = document.querySelector("#carousel-7 .carousel-text");
+			const textElements = document.querySelectorAll("#carousel-7 .carousel-text");
 
 			const observer = new IntersectionObserver(
 				(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-					textElement.classList.add("fade-in");
-					}
-				});
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("fade-in");
+						}
+					});
 				},
 				{ threshold: 0.3 }
 			);
 
-			observer.observe(textElement);
+			textElements.forEach((element) => observer.observe(element));
 		});
-
-
 	</script>
 </body>
 </html>
