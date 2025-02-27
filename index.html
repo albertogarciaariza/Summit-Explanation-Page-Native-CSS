@@ -11,8 +11,12 @@
 			scroll-behavior: smooth;
 		}
 
+		.top-spacing {
+			margin-top: 64px;
+		}
+
         .section {
-            height: 100vh;
+            height: 100dvh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -59,7 +63,7 @@
             font-weight: 400;
             line-height: 26px;
             color: #000048; /* You can adjust this color if needed */
-            font-size: 18px;  /* Adjust the font size */
+            font-size: 20px;  /* Adjust the font size */
         }
 
 		.title-font, .bottom-title {
@@ -215,7 +219,7 @@
 			align-items: center;
 			justify-content: center;
 			width: 100%;
-			height: 100vh;
+			height: 100dvh;
 			background-color: white;
 			padding: 50px;
 		}
@@ -277,7 +281,6 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			margin-top: 5%;
 		}
 
 		.fade-text {
@@ -323,7 +326,7 @@
 		}
 
 		.sectionHeight {
-			height: 50vh;
+			height: 50dvh;
 		}
 
 
@@ -336,7 +339,7 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			height: 100vh; /* Full height of the section */
+			height: 100dvh; /* Full height of the section */
 			text-align: center;
 		}
 
@@ -352,7 +355,6 @@
 		}
 
 		.gif {
-			max-width: 80%; /* Adjust size */
 			height: auto;
 			animation: playOnce 3s forwards; /* Adjust the duration (3s) as needed */
 		}
@@ -387,7 +389,7 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			height: 100vh;
+			height: 100dvh;
 			text-align: center;
 		}
 
@@ -405,7 +407,7 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			height: 100vh;
+			height: 100dvh;
 			text-align: center;
 		}
 
@@ -435,7 +437,7 @@
 
 		#section9 {
 			position: relative;
-			height: 100vh; /* Adjust to the height you want */
+			height: 100dvh; /* Adjust to the height you want */
 			overflow: hidden;
 			display: none;  /* Initially hide the section */
 		}
@@ -499,7 +501,7 @@
 			align-items: center;
 			justify-content: center;
 			width: 100%;
-			height: 100vh;
+			height: 100dvh;
 			background-color: white;
 			padding: 50px;
 		}
@@ -579,7 +581,11 @@
 			flex-direction: column;
 			scroll-snap-type: y mandatory;
 			-webkit-overflow-scrolling: touch;
-			height: 100vh;
+			height: 100dvh;
+		}
+
+		.background-height {
+			min-height: 100dvh;
 		}
 
 		.carousel-item {
@@ -592,6 +598,7 @@
 			color: #fff;
 			font-size: 20px;
 			width: 100%;
+			min-height: 100dvh;
 		}
 
 		.carousel-item-vertical {
@@ -602,7 +609,7 @@
 			align-items: center;
 			text-align: center;
 			width: 100%;
-			min-height: 100vh;
+			min-height: 100dvh;
     		row-gap: 40px;
 		}
 
@@ -631,12 +638,16 @@
 
 		.carousel-bg-7 {
 			background-color: #000048;
-			min-height: 100vh;
+			min-height: 100dvh;
 		}
 
 		.text-top, .text-bottom {
 			max-width: 250px;
 			text-align: left;
+		}
+
+		.text-top-width {
+			max-width: 400px;
 		}
 
 		.text-bottom-reverse {
@@ -658,6 +669,7 @@
 			max-width: 100%;
 			max-height: 100%;
 			object-fit: cover;
+			height: 100dvh;
 		}
 
 		.numbered-list-text {
@@ -677,7 +689,7 @@
 		.video-container {
 			position: relative;
 			width: 100%;
-			height: 100vh; /* Full screen height */
+			height: 100dvh; /* Full screen height */
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -700,6 +712,9 @@
 			font-size: 2rem;
 			font-weight: bold;
 			z-index: 2;
+		}
+
+		.carousel-text-video-bottom {
 			bottom: 10%;
 		}
 
@@ -717,7 +732,7 @@
 		}
 
 		#carousel-9, #carousel-8 {
-			min-height: 100vh;
+			min-height: 100dvh;
 		}
 
 		.carousel-video {
@@ -743,7 +758,7 @@
 		/* Horizontal Carousel Style*/
 		#carousel-13 {
 			width: 100vw;
-			min-height: 100vh;
+			min-height: 100dvh;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -753,7 +768,7 @@
 
 		#horizontal-carousel-container {
 			width: 100vw;
-			min-height: 100vh;
+			min-height: 100dvh;
 			overflow-x: auto;
 			overflow-y: hidden;
 			scroll-snap-type: x mandatory;
@@ -775,7 +790,7 @@
 
 		.horizontal-carousel-item {
 			width: 100vw;
-			height: 100vh;
+			height: 100dvh;
 			scroll-snap-align: start;
 			position: relative;
 			display: flex;
@@ -933,111 +948,91 @@
 			</div>
 		</div>
 	</section>
-	
-	<!-- Section 4 -->
-	<section id="section4" class="section sectionHeight">
-		<div class="content-wrapper">
-			<h2 class="fade-text">
-				<span class="black-text">From</span> 
-				<span class="blue-text">Labor Arbitrage</span>
-			</h2>
-	
-			<div class="icon-row">
-				<!-- 10 Stick Person Icons -->
-				<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-				<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-				<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-				<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-				<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-				<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-				<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-				<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-				<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-				<img src="assets/icon-person.png" alt="Stick Person" class="icon">
+
+	<!----------------***************** Carousel ***************** -->
+	<div id="carousel" class="snap vertical">
+
+		<div id="carousel-01" class="carousel-item">
+			<div class="content-wrapper">
+				<h2 class="typing-container header-font">
+					<span class="typing-text">
+						<span class="black-text">From</span>
+						<span class="blue-text">Labor Arbitrage</span>
+					</span>
+				</h2>
+				<div class="icon-row">
+					<!-- 10 Stick Person Icons -->
+					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
+					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
+					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
+					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
+					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
+					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
+					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
+					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
+					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
+					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
+				</div>
 			</div>
 		</div>
-	</section>
 
-	<!-- Section 5 -->
-	<section id="section5" class="section sectionHeight">
-		<div class="content-wrapper">
-			<h2 class="typing-container header-font">
-				<span class="typing-text">
-					<span class="black-text">to</span> 
-					<span class="blue-text">AI Arbitrage</span>
-				</span>
-			</h2>
-			<div class="gif-container">
-				<img src="assets/brain.gif" alt="Animated GIF" class="gif">
+		<div id="carousel-02" class="carousel-item carousel-typing">
+			<div class="content-wrapper">
+				<h2 class="typing-container header-font">
+					<span class="typing-text">
+						<span class="black-text">to ​</span>
+						<span class="blue-text">AI Arbitrage</span>
+					</span>
+				</h2>
+				<div class="gif-container">
+					<img src="assets/brain.gif" alt="Animated GIF" class="gif">
+				</div>
 			</div>
 		</div>
-	</section>
 
-    <!-- Section 6 -->
-	<section id="section6" class="section">
-		<div class="content-wrapper">
-			<h2 class="typing-container header-font">
-				<span class="typing-text">
-					<span class="black-text">From an</span> 
-					<span class="blue-text">Agency Model</span>
-				</span>
-			</h2>
-			<div class="gif-container">
-				<img src="assets/Animated-GIF-3.gif" alt="Animated GIF" class="gif">
+		<div id="carousel-03" class="carousel-item carousel-typing">
+			<div class="content-wrapper">
+				<h2 class="typing-container header-font">
+					<span class="typing-text">
+						<span class="black-text">From an ​</span>
+						<span class="blue-text">Agency Model</span>
+					</span>
+				</h2>
+				<div class="gif-container">
+					<img src="assets/Animated-GIF-3.gif" alt="Animated GIF" class="gif">
+				</div>
 			</div>
 		</div>
-	</section>
 
-	<!-- Section 7 -->
-	<section id="section7" class="section">
-		<div class="content-wrapper">
-			<h2 class="typing-container header-font">
-				<span class="typing-text">
-					<span class="black-text">to an ​</span>
-					<span class="blue-text">​Agentic Model</span>
-				</span>
-			</h2>
-			<div class="gif-container">
-				<img src="assets/Animated-GIF-4.gif" alt="Animated GIF" class="gif">
+		<div id="carousel-04" class="carousel-item carousel-typing">
+			<div class="content-wrapper">
+				<h2 class="typing-container header-font">
+					<span class="typing-text">
+						<span class="black-text">to an ​</span>
+						<span class="blue-text">​Agentic Model</span>
+					</span>
+				</h2>
+				<div class="gif-container">
+					<img src="assets/Animated-GIF-4.gif" alt="Animated GIF" class="gif">
+				</div>
 			</div>
 		</div>
-	</section>
 
-	<!-- Section 8 -->
-    <section id="section8" class="section">
-        <div class="content">
-			<h2 class="typing-container header-font text-block">
-				<span>
-					<span class="blue-text">AI Empowerment:​</span> 
-					<span class="black-text">​The Next <br>Era of Value Creation​</span>
-				</span>
-			</h2>
-			<div class="fade-in" id="scroll-content">
-                <p class="second-text">To stay relevant and resilient, organizations must blend advanced technology with human insight,
-                    <br>leveraging AI as a collaborative partner while keeping people at the core. This synergy drives adaptability
-				    <br> and future success.
-				</p>
-            </div>
-        </div>
-    </section>
-
-	<!-- Section 9 -->
-	<section id="section9" class="section">
-		<div class="video-background">
-			<video autoplay muted loop id="video-background">
-				<source src="assets/ocean.mp4" type="video/mp4">
-			</video>
-			<div class="overlay"></div>
+		<div id="carousel-video" class="carousel-item">
+			<div class="video-container">
+				<video autoplay loop muted width="1920" height="1080">
+					<source src="assets/ocean.mp4" type="video/mp4">
+				</video>
+				<div class="overlay-carousel"></div>
+				<div class="carousel-text-video carousel-text2">
+					<h2 class="text-highlight">AI Empowerment: ​The Next <br>Era of Value Creation​</h2>
+				</div>
+			</div>
 		</div>
-		<div class="content-wrapper">
-			<h2 class="centered-text">AI Empowerment: ​The Next <br>Era of Value Creation​</h2>
-		</div>
-	</section>
 
-	<!-- Section 10 -->
-	<section id="section10" class="section">
-		<div class="content-container">
-			<div class="text-container">	
+		<div id="carousel-01" class="carousel-item">
+			<div class="carousel-text">
+			  <div class="text-top text-top-width">
 				<div class="text-block">
 					<h3>Future Teams Unite Human and AI​</h3>
 					<p class="second-text">Cross-functional roles, ethical AI committees, and AI team members – virtual ‘employees’ providing real-time insights, project suggestions, and automated reports – blend seamlessly with human colleagues to drive innovation, sustainability, and culturally adaptive solutions.​</p>
@@ -1052,16 +1047,11 @@
 					<h3>Support continuous innovation​</h3>
 					<p class="second-text">Organizations leverage generative AI, predictive analytics, and immersive tools to streamline ideation, development, and optimization, enhancing efficiency and creativity. A human-in-the-loop ensures empathy and inclusivity, while AI tools deliver accessible, culturally resonant products for diverse user needs.</p>
 				</div>
+			  </div>
 			</div>
-	
-			<div class="image-container">
-				<img src="assets/standbild.jpg" alt="AI Collaboration">
-			</div>
-		</div>
-	</section>
-	
-	<!-- Section 12 - Carousel ***************** -->
-	<div id="carousel" class="snap vertical">
+			<div class="carousel-image"><img src="assets/standbild.jpg" alt="Image 1"></div>
+		  </div>
+
 
 		<div id="carousel-7" class="carousel-item carousel-bg-7">
 			<div class="carousel-text carousel-text2">
@@ -1069,6 +1059,10 @@
 				<span class="open-blue-text text-highlight">the Agentic Operation Model</span>
 			</div>
 		</div>
+
+		<!-- <div class="carousel-item klevi">
+			<img src="assets/Benefits.png" alt="Image 1">
+		</div> -->
 
 		<div id="carousel-1" class="carousel-item">
 		  <div class="carousel-text">
@@ -1235,7 +1229,7 @@
 					<source src="assets/bike-video.mp4" type="video/mp4">
 				</video>
 				<div class="overlay-carousel"></div>
-				<div class="carousel-text-video">
+				<div class="carousel-text-video carousel-text-video-bottom">
 					<span class="white-text text-highlight">Achieve sustainable</span>
 					<span class="open-blue-text text-highlight">innovation and long-term growth.</span>
 				</div>
@@ -1248,7 +1242,7 @@
 					<source src="assets/parkour-video.mp4" type="video/mp4">
 				</video>
 				<div class="overlay-carousel"></div>
-				<div class="carousel-text-video">
+				<div class="carousel-text-video carousel-text-video-bottom">
 					<span class="white-text text-highlight">Empower teams with AI team members to</span>
 					<span class="open-blue-text text-highlight">amplify productivity and creativity.</span>
 				</div>
@@ -1261,7 +1255,7 @@
 					<source src="assets/snowboard-video.mp4" type="video/mp4">
 				</video>
 				<div class="overlay-carousel"></div>
-				<div class="carousel-text-video">
+				<div class="carousel-text-video carousel-text-video-bottom">
 					<span class="white-text text-highlight">Build adaptable, resilient systems</span>
 					<span class="open-blue-text text-highlight">that thrive in an ever-changing landscape.</span>
 				</div>
@@ -1269,15 +1263,6 @@
 		</div>
 
 		<div id="carousel-13" class="carousel-item-vertical">
-			<!-- <div class="last-section-title">
-			  <span class="text-highlight">Take the </span>
-			  <span class="open-blue-text text-highlight">Next Step</span>  
-			</div>
-			<div class="carousel-last-section">
-			  <div class="carousel-image"><img src="assets/last-section-1.png" alt="Image 6"></div>
-			  <div class="carousel-image"><img src="assets/last-section-2.png" alt="Image 6"></div>
-			</div> -->
-
 			<div id="horizontal-carousel-container">
 				<div id="horizontal-carousel" class="horizontal-snap horizontal">
 				  <div class="horizontal-carousel-item" id="carousel-1">
@@ -1345,10 +1330,6 @@
 			  </div>
 		</div>
 	</div>
-
-	
-	  
-
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
@@ -1423,90 +1404,91 @@
 			});
 		});
 
-		// Scroll event to show section 5
-		window.addEventListener("scroll", function () {
-			const section4Rect = section4.getBoundingClientRect();
-			const windowHeight = window.innerHeight;
+		// *************** Stickman Copy Animation **********************
+		const onCarouselIntersection = (entries, observer) => {
+			entries.forEach(entry => {
+				const carouselItem = entry.target;
 
-			// Activate Section 5 when Section 4 is **completely** out of view
-			if (section4Rect.top < -section4Rect.height * 0.5) { 
-				if (!section5.classList.contains("active")) {
-					section5.classList.add("active"); 
-					section5.style.display = "flex"; 
-					section5.style.opacity = "1"; 
+				// If the carousel is in the viewport
+				if (entry.isIntersecting) {
+					console.log(`----${carouselItem.id} entered ---`);
 
-					// Activate typing effect for Section 5
-					setTimeout(() => {
-						document.querySelector("#section5 .typing-container").classList.add("active");
-					}, 200);
+					// Check if class is already added to prevent re-triggering
+					if (!carouselItem.classList.contains("activated")) {
+						carouselItem.classList.add("activated"); // Mark as activated
 
-					// Show GIF with delay
-					setTimeout(() => {
-						document.querySelector("#section5 .gif").classList.add("visible");
-					}, 500);
+						// Trigger typing animation for the text by adding "active" to the parent container
+						const typingContainer = carouselItem.querySelector(".typing-container");
+						if (typingContainer) {
+							typingContainer.classList.add("active");
+						}
+
+						// Show icons with delay
+						const icons = carouselItem.querySelectorAll(".icon");
+						icons.forEach((icon, index) => {
+							setTimeout(() => {
+								icon.classList.add("visible");
+							}, index * 250); // Delay of 0.25s per icon
+						});
+					}
+				}
+			});
+		};
+
+		// Create an IntersectionObserver instance with a different name
+		const carouselObserver = new IntersectionObserver(onCarouselIntersection, {
+			threshold: 0.5 // Trigger when 50% of the element is visible
+		});
+
+		// Observe the carousel
+		const carouselItem = document.querySelector("#carousel-01");
+		carouselObserver.observe(carouselItem);
+
+		// ***************** END ***************************
+
+		// ************** Important function to deal with TYPING ANIMATION *************
+		
+		// IntersectionObserver callback function
+		const onIntersection = (entries, observer) => {
+			entries.forEach(entry => {
+			const carouselItem = entry.target;
+
+			// If the carousel is in the viewport
+			if (entry.isIntersecting) {
+				console.log(`----${carouselItem.id} entered ---`);
+
+				// Check if class is already added to prevent re-triggering
+				if (!carouselItem.classList.contains("activated")) {
+				carouselItem.classList.add("activated"); // Mark as activated
+
+				// Dynamically target the elements within each carousel
+				setTimeout(() => {
+					const typingContainer = carouselItem.querySelector(".typing-container");
+					if (typingContainer) typingContainer.classList.add("active");
+				}, 200);
+
+				setTimeout(() => {
+					const gif = carouselItem.querySelector(".gif");
+					if (gif) gif.classList.add("visible");
+				}, 500);
 				}
 			}
+			});
+		};
+
+		// Create an IntersectionObserver instance
+		const observer = new IntersectionObserver(onIntersection, {
+			threshold: 0.5 // Trigger when 50% of the element is visible
 		});
 
-		// Scroll event to show section 6
-		window.addEventListener("scroll", function () {
-			const section5Bottom = section5.getBoundingClientRect().bottom;
-			const windowHeight = window.innerHeight;
-
-			if (section5Bottom < windowHeight * 0.3) { 
-				if (!section6.classList.contains("active")) {
-					section6.classList.add("active"); 
-					section6.style.display = "flex"; 
-					section6.style.opacity = "1"; 
-
-					// Activate typing effect
-					setTimeout(() => {
-						document.querySelector("#section6 .typing-container").classList.add("active");
-					}, 500);
-
-					// Show GIF with delay
-					setTimeout(() => {
-						document.querySelector("#section6 .gif").classList.add("visible");
-					}, 1500);
-				}
-			}
+		// Observe all carousel items
+		const carouselItems = document.querySelectorAll("#carousel-02, #carousel-03, #carousel-04");
+		carouselItems.forEach(carouselItem => {
+			observer.observe(carouselItem);
 		});
 
-		// Scroll event to show section 7
-		window.addEventListener("scroll", function () {
-			const section5Bottom = section6.getBoundingClientRect().bottom;
-			const windowHeight = window.innerHeight;
 
-			if (section5Bottom < windowHeight * 0.3) { 
-				if (!section7.classList.contains("active")) {
-					section7.classList.add("active"); 
-					section7.style.display = "flex"; 
-					section7.style.opacity = "1"; 
-
-					// Activate typing effect
-					setTimeout(() => {
-						document.querySelector("#section7 .typing-container").classList.add("active");
-					}, 500);
-
-					// Show GIF with delay
-					setTimeout(() => {
-						document.querySelector("#section7 .gif").classList.add("visible");
-					}, 1500);
-				}
-			}
-		});
-
-		// Scroll event to show section 8
-		window.addEventListener('scroll', function() {
-			const section8 = document.getElementById('section8');
-			const section8Position = section8.getBoundingClientRect().top;
-			const windowHeight = window.innerHeight;
-
-			// Fade-in the content when Section 8 is in the viewport
-			if (section8Position < windowHeight * 0.8) { // When section 8 is near the viewport
-				section8.classList.add('active');
-			}
-		});
+        // ************************* END ******************************************
 
 		document.querySelectorAll('.gif').forEach(function(gif) {
 			gif.addEventListener('load', function() {
@@ -1518,74 +1500,27 @@
 			});
 		});
 
-		// Section 9
-
-		window.addEventListener('scroll', function() {
-			const section9 = document.getElementById('section9');
-			const section9Position = section8.getBoundingClientRect().top;
-			const windowHeight = window.innerHeight;
-
-			// Fade-in the content when Section 8 is in the viewport
-			if (section9Position < windowHeight * 0.1) { // When section 8 is near the viewport
-				section9.classList.add('active');
-			}
-			setTimeout(() => {
-						const overlay = section9.querySelector('.overlay');
-						overlay.style.opacity = 1;  // Fade in the overlay
-					}, 1000);
-				// Wait for the overlay to finish, then show the text
-			
-			setTimeout(function() {
-				document.querySelector('.centered-text').style.opacity = 1;
-				}, 2000); // Delay of 1 second (adjust as necessary)
-		});
-
-		// Section 10
-		window.addEventListener("scroll", function () {
-			const section9 = document.getElementById('section9');
-			const section10 = document.getElementById('section10');
-
-			if (!section9 || !section10) return; // Prevent errors if sections are missing
-
-			const section9Rect = section9.getBoundingClientRect();
-			const section10Rect = section10.getBoundingClientRect();
-			const windowHeight = window.innerHeight;
-
-			// Ensure Section 10 only activates when Section 9 has completely left the viewport
-			if (section9Rect.top < -section9Rect.height * 0.5) { 
-				if (!section10.classList.contains("active")) {
-					section10.classList.add("active"); 
-					section10.style.display = "block"; 
-					section10.style.opacity = "1"; 
-
-					// Animate the text if needed
-					setTimeout(() => {
-						const fadeText = document.querySelector("#section10 .text-container");
-						if (fadeText) {
-							fadeText.style.opacity = "1";
-						}
-					}, 500);
-				}
-			}
-		});
-
-		// Section 11
-
-		window.addEventListener("scroll", function () {
-			const section11 = document.getElementById('section11');
-			const section11Position = section10.getBoundingClientRect().top;
-
-			if (section11Position < window.innerHeight * 0.1) { 
-				if (!section11.classList.contains("active")) {
-					section11.classList.add("active"); 
-					section11.style.opacity = "1";  // Fade in section 11 when scrolled into view
-				}
-			}
-		});
-
 		// Section 12 - Carousel 7
 		document.addEventListener("DOMContentLoaded", function () {
 			const textElements = document.querySelectorAll("#carousel-7 .carousel-text");
+
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("fade-in");
+						}
+					});
+				},
+				{ threshold: 0.3 }
+			);
+
+			textElements.forEach((element) => observer.observe(element));
+		});
+
+		// Video Fade-In Animation
+		document.addEventListener("DOMContentLoaded", function () {
+			const textElements = document.querySelectorAll("#carousel-video .carousel-text-video");
 
 			const observer = new IntersectionObserver(
 				(entries) => {
