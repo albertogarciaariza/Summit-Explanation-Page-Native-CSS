@@ -266,16 +266,6 @@
 			margin-bottom: 0;
 		}
 
-		/* Section 4 *****************************************************************************/
-
-		#section4 {
-        display: none;
-        text-align: center;
-        padding: 100px 20px;
-        opacity: 0;
-        transition: opacity 1s ease-in;
-    	}
-
 		.content-wrapper {
 			display: flex;
 			flex-direction: column;
@@ -320,32 +310,8 @@
 			opacity: 1 !important;
 		}
 
-		#section4.active {
-			opacity: 1;
-			display: block !important;
-		}
-
 		.sectionHeight {
 			height: 50dvh;
-		}
-
-
-		/* Section 5 *****************************************************************************/
-
-		#section5 {
-			display: none;
-			opacity: 0;
-			transition: opacity 1s ease-in;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100dvh; /* Full height of the section */
-			text-align: center;
-		}
-
-		#section5.active {
-			display: flex !important;
-			opacity: 1;
 		}
 
 		.gif-container {
@@ -379,89 +345,6 @@
 			opacity: 1 !important;
 		}
 
-
-		/* Section 6*****************************************************************************/
-
-		#section6 {
-			display: none;
-			opacity: 0;
-			transition: opacity 1s ease-in;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100dvh;
-			text-align: center;
-		}
-
-		#section6.active {
-			display: flex !important;
-			opacity: 1;
-		}
-
-		/* Section 7 *****************************************************************************/
-
-		#section7 {
-			display: none;
-			opacity: 0;
-			transition: opacity 1s ease-in;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100dvh;
-			text-align: center;
-		}
-
-		#section7.active {
-			display: flex !important;
-			opacity: 1;
-		}
-
-		/* Section 8 *****************************************************************************/
-
-		#section8 .content {
-			text-align: center;
-			margin-top: 100px;
-		}
-
-		/* Fade-in effect for Section 8 */
-		#section8 .fade-in {
-			opacity: 0;
-			transition: opacity 1.8s ease-in;
-		}
-
-		#section8.active .fade-in {
-			opacity: 1;
-		}
-
-		/* Section 9 ***********************************************************************************************/
-
-		#section9 {
-			position: relative;
-			height: 100dvh; /* Adjust to the height you want */
-			overflow: hidden;
-			display: none;  /* Initially hide the section */
-		}
-
-		#section9.active {
-			display: block;  /* Show section when active */
-		}
-
-		/* Video background */
-		.video-background {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			z-index: -1; /* Places the video behind other content */
-		}
-
-		#video-background {
-			object-fit: cover; /* Ensures video covers the entire section */
-			width: 100%;
-			height: 100%;
-		}
-
 		/* Overlay that appears after 2 seconds */
 		.overlay {
 			position: absolute;
@@ -491,87 +374,12 @@
 			transition: opacity 1s ease-in-out; /* Smooth transition for fading */
 			}
 
-		/* Section 10 ************************************************************************************/
-
-		#section10 {
-			opacity: 0;
-			transform: translateX(100%); /* Start off-screen (right) */
-			transition: transform 1s ease-out, opacity 1s ease-out;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 100%;
-			height: 100dvh;
-			background-color: white;
-			padding: 50px;
-		}
-
-		/* Make section 3 appear when active */
-		#section10.active {
-			opacity: 1;
-			transform: translateX(0); /* Moves in from right */
-		}
-
-		/* Section 3 layout: Left = text, Right = image */
-		#section10 .content-container {
-			display: flex;
-			max-width: 1200px;
-		}
-
-		#section10 .text-container {
-			flex: 1;
-			padding: 20px;
-		}
-
-		#section10 .image-container {
-			flex: 1;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
-		#section10 img {
-			max-width: 100%;
-			height: auto;
-			border-radius: 10px;
-		}
-
-		/* Section 11 */
-
-		/* Section 11 */
-		.section11 {
-			background-color: #000048; /* Dark blue background */
-			padding: 100px 0;
-			text-align: center;
-			color: white;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			opacity: 0;
-			transition: opacity 1s ease-in-out;
-		}
-
-		.section11 .content-container {
-			max-width: 800px;
-			margin: 0 auto;
-		}
-
-		.section11 .fade-text {
-			font-size: 2rem;
-			opacity: 0; /* Initially hidden */
-			transition: opacity 2s ease-in-out;
-		}
-
 		.white-text {
 			color: white;
 		}
 
 		.open-blue-text {
 			color: #3ACFE8;
-		}
-
-		.section11.active .fade-text {
-			opacity: 1; /* Fade in text */
 		}
 
 		/* Section 12 ** Carousel ***************************************************************************/
