@@ -15,6 +15,10 @@
 			margin-top: 64px;
 		}
 
+		.top-spacing-m {
+			margin-top: 48px;
+		}
+
         .section {
             height: 100dvh;
             display: flex;
@@ -22,19 +26,6 @@
             align-items: center;
             position: relative;
             text-align: center;
-        }
-
-        #section1 {
-            position: relative;
-            overflow: hidden;
-        }
-
-        #section1 video {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            z-index: -1;
         }
 
         .content {
@@ -99,9 +90,8 @@
             font-size: 20px;
             font-weight: 600;
             line-height: 20px;
-            margin-top: 20px;
             display: inline-block;
-            opacity: 0;
+            opacity: 1;
             transition: opacity 1s ease-in;
             border-radius: 30px; /* Rounded edges */
             position: relative;
@@ -123,16 +113,6 @@
             vertical-align: middle;  /* Align icon with the text */
         }
 
-        #section2 {
-            display: none; /* Hide section2 initially */
-            /* background: black;
-            color: white; */
-        }
-
-        #section2.active {
-            display: block; /* Show section2 when active */
-        }
-
         /* Style for the logo */
         #logo {
             position: absolute;
@@ -140,23 +120,8 @@
             left: 20px;
             width: 120px; /* Adjust the size as necessary */
             height: auto;
+			z-index: 1;
         }
-
-		/* Section 2 *****************************************************************************/
-		/* #section2 {
-			position: relative;
-			overflow: hidden;
-			background: black;
-			color: white;
-		} */
-
-		#section2 video {
-			position: absolute;
-			top: 0; left: 0;
-			width: 100%; height: 100%;
-			object-fit: cover;
-			z-index: -1;
-		}
 
 		#overlay {
 			position: absolute;
@@ -165,29 +130,6 @@
 			background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
 			display: none;  /* Initially hidden */
 			z-index: 5;
-		}
-
-		/* Text in the middle of the overlay */
-		/* Text in the middle of the overlay */
-		#section2 .text-content {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);  /* Center the text */
-			color: #FFFFFF;
-			font-family: 'Gellix', sans-serif;
-			font-weight: 400;
-			font-size: 84px;
-			line-height: 85px;
-			text-align: center;
-			opacity: 0; /* Initially hidden */
-			transition: opacity 0.5s ease-in; /* Faster fade-in effect */
-			z-index: 10;
-		}
-
-		/* When section2 is active, make the text visible */
-		#section2.active .text-content {
-			opacity: 1;
 		}
 
 		/* Initially hide text content */
@@ -209,51 +151,6 @@
 			opacity: 1 !important;
 		}
 
-		/* Section 3 *****************************************************************************/
-		/* Initially hide section 3 */
-		#section3 {
-			opacity: 0;
-			transform: translateX(100%); /* Start off-screen (right) */
-			transition: transform 1s ease-out, opacity 1s ease-out;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 100%;
-			height: 100dvh;
-			background-color: white;
-			padding: 50px;
-		}
-
-		/* Make section 3 appear when active */
-		#section3.active {
-			opacity: 1;
-			transform: translateX(0); /* Moves in from right */
-		}
-
-		/* Section 3 layout: Left = text, Right = image */
-		#section3 .content-container {
-			display: flex;
-			max-width: 1200px;
-		}
-
-		#section3 .text-container {
-			flex: 1;
-			padding: 20px;
-		}
-
-		#section3 .image-container {
-			flex: 1;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
-		#section3 img {
-			max-width: 100%;
-			height: auto;
-			border-radius: 10px;
-		}
-
 		.text-container h3 {
 			margin-bottom: 20px;
 		}
@@ -271,13 +168,6 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-		}
-
-		.fade-text {
-			font-size: 48px;
-			font-weight: bold;
-			opacity: 0;
-			transition: opacity 1s ease-in;
 		}
 
 		.header-font {
@@ -697,69 +587,67 @@
     </style>
 </head>
 <body>
-    <!-- Logo added at the top-left corner -->
-    <img src="assets/Logo.png" alt="Logo" id="logo">
+	<!----------------***************** Carousel ***************** -->
+	<div id="carousel" class="snap vertical">
+		<div id="carousel-00" class="carousel-item">
+			<div class="video-container">
+				<!-- Logo added at the top-left corner -->
+				<img src="assets/Logo.png" alt="Logo" id="logo">
 
-	<!-- Section 1 -->
-    <section id="section1" class="section">
-        <video autoplay loop muted>
-            <source src="assets/background.mov" type="video/mp4">
-        </video>
-        <div class="content">
-            <h1 id="main-title">Unleash the Power of <span id="highlight-text">Human-AI Collaboration</span></h1>
-            <div class="fade-in" id="scroll-content">
-                <p class="second-text">AI Agents will become team members. Our Agentic Operating Model approach pairs human creativity with 
-                    <br>AI precision, unlocking unparalleled efficiency, innovation, and adaptability.</p>
-            </div>
-            <button class="discover-button" id="discover-button">
-                Discover Now
-                <img src="assets/button-Icon.png" alt="Arrow Icon">
-            </button>
-        </div>
-    </section>
+				<video autoplay loop muted width="1920" height="1080">
+					<source src="assets/background.mov" type="video/mp4">
+				</video>
+				<div class="content">
+					<div>
+						<span class="black-text text-highlight">Unleash the Power of</span>
+						<span class="blue-text text-highlight">Human-AI Collaboration</span>
+					</div>
+					<p class="second-text top-spacing-m">AI Agents will become team members. Our Agentic Operating Model approach pairs human creativity with 
+						<br>AI precision, unlocking unparalleled efficiency, innovation, and adaptability.</p>
+					<button class="discover-button top-spacing-m" id="discover-button">
+						Discover Now
+						<img src="assets/button-Icon.png" alt="Arrow Icon">
+					</button>
+				</div>
+			</div>
+		</div>
 
-	<!-- Section 2 -->
-	<section id="section2" class="section">
-        <video autoplay loop muted>
-            <source src="assets/second-section-video.mov" type="video/mp4">
-        </video>
-        <div id="overlay"></div> <!-- Dark overlay -->
-        <div class="text-content">
-            <p>Breaking Barriers: Why</p>
-            <p>Traditional Work Models</p>
-            <p>No Longer Work</p>
-        </div>
-    </section>
+		<div id="carousel-video" class="carousel-item">
+			<div class="video-container">
+				<video autoplay loop muted width="1920" height="1080">
+					<source src="assets/second-section-video.mov" type="video/mp4">
+				</video>
+				<div class="overlay-carousel"></div>
+				<div class="carousel-text-video carousel-text2">
+					<h2 class="text-highlight">Breaking Barriers: Why <br>Traditional Work Models <br>​No Longer Work</h2>
+				</div>
+			</div>
+		</div>
 
-	<!-- Section 3 -->
-	<section id="section3" class="section">
-		<div class="content-container">
-			<div class="text-container">	
+		<div id="1" class="carousel-item">
+			<div class="carousel-text">
+			  <div class="text-top text-top-width">
 				<div class="text-block">
-					<h3>Inefficiency Limits Potential</h3>
+					<h3>Inefficiency Limits Potential​</h3>
 					<p class="second-text">Traditional labor models rely on human-driven tasks or outsourcing, prioritizing cost savings over innovation. This approach creates bottlenecks, making it harder for businesses to scale and adapt to modern demands.</p>
 				</div>
 	
 				<div class="text-block">
-					<h3>Missing the Innovation Mark</h3>
+					<h3>Missing the Innovation Mar​k</h3>
 					<p class="second-text">Repetitive work consumes valuable time, leaving little room for creativity and strategy. Organizations struggle to harness data and streamline processes, leading to stagnant workflows and missed opportunities for growth.</p>
 				</div>
 	
 				<div class="text-block">
-					<h3>The Human-AI Gap</h3>
+					<h3>The Human-AI Gap​</h3>
 					<p class="second-text">Traditional systems fail to integrate AI effectively, overlooking the powerful synergy between human insight and AI precision. This disconnect prevents businesses from unlocking the full potential of technology-driven collaboration.</p>
 				</div>
+			  </div>
 			</div>
-	
-			<div class="image-container">
-				<img src="assets/section3.png" alt="AI Collaboration">
-			</div>
+			<div class="carousel-image"><img src="assets/section3.png" alt="Image 1"></div>
 		</div>
-	</section>
-
-	<!----------------***************** Carousel ***************** -->
-	<div id="carousel" class="snap vertical">
-
+		
+		
+		
 		<div id="carousel-01" class="carousel-item">
 			<div class="content-wrapper">
 				<h2 class="typing-container header-font">
@@ -858,7 +746,7 @@
 			  </div>
 			</div>
 			<div class="carousel-image"><img src="assets/standbild.jpg" alt="Image 1"></div>
-		  </div>
+		</div>
 
 
 		<div id="carousel-7" class="carousel-item carousel-bg-7">
@@ -1140,76 +1028,9 @@
 	</div>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			const scrollContent = document.getElementById("scroll-content");
-			const button = document.getElementById("discover-button");
-			const section2 = document.getElementById("section2");
-			const highlightText = document.getElementById("highlight-text");
-			const overlay = document.getElementById("overlay");
-			const textContent = document.querySelector("#section2 .text-content");
-			const section3 = document.getElementById("section3");
-			const section4 = document.getElementById("section4");  // Section 4
-			const fadeText = document.querySelector(".fade-text");
-			const icons = document.querySelectorAll(".icon");
-		
-			// Fade-in animations for Section 1
-			setTimeout(function () {
-				scrollContent.classList.add("visible");
-				button.classList.add("visible");
-				highlightText.style.color = "#2F78C4"; // Change text color
-			}, 1200);
-		
-			// Ensure text is hidden initially
-			textContent.style.opacity = "0";
-		
-			// Play video and apply overlay & text timing
-			const videoElement = section2.querySelector("video");
-			videoElement.addEventListener('play', function () {
-				setTimeout(function () {
-					overlay.style.display = "block"; // Show overlay after 2s
-		
-					setTimeout(function () {
-						textContent.classList.add("active"); // Ensure text fades in
-					}, 500); // 1s delay after overlay appears
-		
-				}, 1000); // 2 seconds after video starts
-			});
-		
-			// Show section2 and scroll to it when button is clicked
-			button.addEventListener("click", function (event) {
-				event.preventDefault();
-				section2.classList.add("active");  // Reveal section2
-				section2.scrollIntoView({ behavior: "smooth" });  // Scroll smoothly to section2
-			});
-		
-			// Scroll event to show section 3 and section 4
-			window.addEventListener("scroll", function () {
-				const section2Bottom = section2.getBoundingClientRect().bottom;
-				if (section2Bottom < window.innerHeight) {
-					section3.classList.add("active");
-				}
-
-				// Show section4 when scrolling past section3
-				const section3Top = section3.getBoundingClientRect().top;
-				if (section3Top <= 0) { // Section 3 is out of view (top of section3 reaches 0)
-					// Only add the "active" class once
-					if (!section4.classList.contains("active")) {
-						section4.classList.add("active"); // Mark section4 as active
-						section4.style.display = "block"; // Make section visible
-						section4.style.opacity = "1"; // Fade in section4
-
-						// Fade in the text
-						fadeText.style.opacity = "1";
-
-						// Animate icons one by one with a delay
-						icons.forEach((icon, index) => {
-							setTimeout(() => {
-								icon.classList.add("visible");
-							}, index * 250); // Delay of 0.2s per icon
-						});
-					}
-				}
-			});
+		document.getElementById("discover-button").addEventListener("click", function () {
+			const nextSection = document.getElementById("carousel-video"); // The next carousel item
+			nextSection.scrollIntoView({ behavior: "smooth" });
 		});
 
 		// *************** Stickman Copy Animation **********************
