@@ -123,15 +123,6 @@
 			z-index: 1;
         }
 
-		#overlay {
-			position: absolute;
-			top: 0; left: 0;
-			width: 100%; height: 100%;
-			background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-			display: none;  /* Initially hidden */
-			z-index: 5;
-		}
-
 		/* Initially hide text content */
 		.text-content {
 			position: absolute;
@@ -149,10 +140,6 @@
 		/* When active, fade in the text */
 		.text-content.active {
 			opacity: 1 !important;
-		}
-
-		.text-container h3 {
-			margin-bottom: 20px;
 		}
 	
 		.text-block {
@@ -183,55 +170,7 @@
 			color: #2F78C4; /* Dark blue */
 		}
 
-		.icon-row {
-			display: flex;
-			gap: 10px; /* Small space between icons */
-			margin-top: 20px;
-		}
-
-		.icon {
-			width: 50px; /* Adjust icon size */
-			height: auto;
-			opacity: 0;
-			transition: opacity 0.5s ease-in;
-		}
-
 		.visible {
-			opacity: 1 !important;
-		}
-
-		.sectionHeight {
-			height: 50dvh;
-		}
-
-		.gif-container {
-			margin-top: 20px;
-			display: flex;
-			justify-content: center;
-		}
-
-		.gif {
-			height: auto;
-			animation: playOnce 3s forwards; /* Adjust the duration (3s) as needed */
-		}
-
-		@keyframes playOnce {
-			0% { opacity: 0; }
-			100% { opacity: 1; } /* Fade in the GIF and leave it visible */
-		}
-
-		.gif.visible {
-			opacity: 1;
-		}
-
-		.fade-text {
-			font-size: 48px;
-			font-weight: bold;
-			opacity: 0;
-			transition: opacity 1s ease-in;
-		}
-
-		.fade-text.visible {
 			opacity: 1 !important;
 		}
 
@@ -272,7 +211,7 @@
 			color: #3ACFE8;
 		}
 
-		/* Section 12 ** Carousel ***************************************************************************/
+		/* Carousel Styling ***************************************************************************/
 		#carousel {
 			overflow-y: auto;
 			display: flex;
@@ -280,10 +219,6 @@
 			scroll-snap-type: y mandatory;
 			-webkit-overflow-scrolling: touch;
 			height: 100dvh;
-		}
-
-		.background-height {
-			min-height: 100dvh;
 		}
 
 		.carousel-item {
@@ -451,6 +386,7 @@
 		.last-section-title {
 			display: flex;
 			column-gap: 10px;
+			transform: translateY(100px);
 		}
 
 		/* Horizontal Carousel Style*/
@@ -506,7 +442,7 @@
 		.horizontal-carousel-last-section {
 			display: flex;
 			gap: 50px;
-			align-items: center;
+			align-items: flex-start; /* align animation in center with text (special case: animation starts in left)*/
 		}
 
 		.horizontal-carousel-image img {
@@ -533,10 +469,12 @@
 		.left-arrow-direction {
 			flex-flow: row-reverse;
 			margin-left: auto;
+			align-items: center;
 		}
 
 		.right-arrow-direction {
 			margin-right: auto;
+			align-items: center;
 		}
 		/* OrderedList Styles*/
 
@@ -583,6 +521,79 @@
 				width: 100%;
 				opacity: 1;
 			}
+		}
+
+		/* People Animation*/
+		.people-animation {
+			margin-top: 24px;
+			width: 450px;
+			height: 100px;
+			background: url('assets/people-animation.png') 0 0 no-repeat;
+		}
+
+		.people-animation.play {
+			animation: play-sprite0 1.5s steps(9) forwards;
+		}
+
+		@keyframes play-sprite0 {
+			from { background-position: 0 0; }
+			to { background-position: -4050px 0; }
+		}
+
+		/* Brain Animation*/
+		.brain-animation {
+			margin-top: 24px;
+			width: 100px;
+			height: 110px;
+			background: url('assets/brain-animation.png') 0 0 no-repeat;
+		}
+
+		.brain-animation.play {
+			animation: play-sprite 2s steps(34) forwards;
+		}
+
+		@keyframes play-sprite {
+			from { background-position: 0 0; }
+			to { background-position: -3400px 0; }
+		}
+
+
+		/* Building Animation*/
+		.building-animation {
+			margin-top: 24px;
+			width: 350px;  /* Width of a single frame */
+			height: 110px;  /* Adjust height automatically */
+			background: url('assets/building-animation.png') 0 0 no-repeat;
+			}
+
+			.building-animation.play {
+			animation: play-sprite2 2s steps(32) forwards;
+			}
+
+			@keyframes play-sprite2 {
+			from { background-position: 0 0; }
+			to { background-position: -11200px 0; } /* Moves left by total width */
+		}
+
+		/* Building & Robots Animation*/
+		.building-robot-animation {
+			margin-top: 24px;
+			width: 330px;  /* Width of a single frame */
+			height: 240px;  /* Adjust height automatically */
+			background: url('assets/building-robot-animation.png') 0 0 no-repeat;
+			}
+
+			.building-robot-animation.play {
+			animation: play-sprite3 3s steps(81) forwards;
+			}
+
+			@keyframes play-sprite3 {
+			from { background-position: 0 0; }
+			to { background-position: -26730px 0; } /* Moves left by total width */
+		}
+
+		#carousel-04 .content-wrapper {
+			align-items: flex-start;
 		}
     </style>
 </head>
@@ -656,19 +667,7 @@
 						<span class="blue-text">Labor Arbitrage</span>
 					</span>
 				</h2>
-				<div class="icon-row">
-					<!-- 10 Stick Person Icons -->
-					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-					<img src="assets/icon-person.png" alt="Stick Person" class="icon">
-				</div>
+				<div class="people-animation"></div>
 			</div>
 		</div>
 
@@ -680,9 +679,7 @@
 						<span class="blue-text">AI Arbitrage</span>
 					</span>
 				</h2>
-				<div class="gif-container">
-					<img src="assets/brain.gif" alt="Animated GIF" class="gif">
-				</div>
+				<div class="brain-animation"></div>
 			</div>
 		</div>
 
@@ -694,9 +691,7 @@
 						<span class="blue-text">Agency Model</span>
 					</span>
 				</h2>
-				<div class="gif-container">
-					<img src="assets/Animated-GIF-3.gif" alt="Animated GIF" class="gif">
-				</div>
+				<div class="building-animation"></div>
 			</div>
 		</div>
 
@@ -708,9 +703,7 @@
 						<span class="blue-text">​Agentic Model</span>
 					</span>
 				</h2>
-				<div class="gif-container">
-					<img src="assets/Animated-GIF-4.gif" alt="Animated GIF" class="gif">
-				</div>
+				<div class="building-robot-animation"></div>
 			</div>
 		</div>
 
@@ -959,21 +952,21 @@
 		</div>
 
 		<div id="carousel-13" class="carousel-item-vertical">
+			<!-- Keep the title fixed for both Carousel slides-->
+			<div class="last-section-title">
+				<span class="text-highlight">Take the </span>
+				<span class="blue-text text-highlight">Next Step</span>  
+			  </div>
 			<div id="horizontal-carousel-container">
 				<div id="horizontal-carousel" class="horizontal-snap horizontal">
-				  <div class="horizontal-carousel-item" id="carousel-1">
-					<div class="last-section-title">
-					  <span class="text-highlight">Take the </span>
-					  <span class="open-blue-text text-highlight">Next Step</span>  
-					</div>
-		
+				  <div class="horizontal-carousel-item" id="carousel-1">		
 					<div class="horizontal-carousel-last-section last-section-container">
 					  <div class="horizontal-carousel-image horizontal-container">
 						<img class="horizontal-last-section-image" src="assets/last-section-1.png" alt="Image 1">
 						<p class="title-font">See the Agentic Model in Action</p>
 						<p class="second-text">Explore our Supply Chain Demo at the booth and discover how AI-powered collaboration transforms 
 							supply chain operations for greater efficiency and adaptability.</p>
-						<div class="horizontal-carousel-last-section right-arrow-direction">
+						<div class="horizontal-carousel-last-section right-arrow-direction" style="display: none;">
 							<img class="arrow" src="assets/left-arrow.png" alt="Image 2">
 							<p>Explore the other screens</p>
 						</div>
@@ -992,12 +985,7 @@
 					</div>
 				  </div>
 		
-				  <div class="horizontal-carousel-item" id="carousel-1">
-					<div class="last-section-title">
-					  <span class="text-highlight">Take the </span>
-					  <span class="open-blue-text text-highlight">Next Step</span>  
-					</div>
-		
+				  <div class="horizontal-carousel-item" id="carousel-1">		
 					<div class="horizontal-carousel-last-section last-section-container">
 					  <div class="horizontal-carousel-image horizontal-container">
 						<img class="horizontal-last-section-image" src="assets/last-section-image-1.png" alt="Image 1">
@@ -1015,7 +1003,7 @@
 						<p class="second-text">Discover how our innovations enhance Adobe Experience Platform, 
 							unlocking new capabilities for data-driven experiences.
 						</p>
-						<div class="horizontal-carousel-last-section left-arrow-direction">
+						<div class="horizontal-carousel-last-section left-arrow-direction" style="display: none;">
 							<img class="arrow" src="assets/right-arrow.png" alt="Image 2">
 							<p>Explore the other screens</p>
 						</div>
@@ -1051,14 +1039,6 @@
 						if (typingContainer) {
 							typingContainer.classList.add("active");
 						}
-
-						// Show icons with delay
-						const icons = carouselItem.querySelectorAll(".icon");
-						icons.forEach((icon, index) => {
-							setTimeout(() => {
-								icon.classList.add("visible");
-							}, index * 250); // Delay of 0.25s per icon
-						});
 					}
 				}
 			});
@@ -1119,15 +1099,82 @@
 
         // ************************* END ******************************************
 
-		document.querySelectorAll('.gif').forEach(function(gif) {
-			gif.addEventListener('load', function() {
-				// Once the GIF is loaded, it will play once, then reset
-				setTimeout(function() {
-				gif.style.opacity = 1; // Ensure the fade-in effect stays
-				gif.src = gif.src; // Reload the GIF to play it once
-				}, 3000); // Wait for the duration of the fade-in effect
-			});
+		// 0 - People Animation played when entering the section
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const carousel = document.getElementById("carousel-01");
+			const sprite = document.querySelector("#carousel-01 .people-animation");
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					sprite.classList.add("play"); // Start animation
+				} else {
+					sprite.classList.remove("play"); // Reset so it replays next time
+				}
+				});
+			}, { threshold: 0.5 }); // Adjust threshold as needed
+
+			observer.observe(carousel);
 		});
+
+		// 1 - Brain Animation played when entering the section
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const carousel = document.getElementById("carousel-02");
+			const sprite = document.querySelector("#carousel-02 .brain-animation");
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					sprite.classList.add("play"); // Start animation
+				} else {
+					sprite.classList.remove("play"); // Reset so it replays next time
+				}
+				});
+			}, { threshold: 0.5 }); // Adjust threshold as needed
+
+			observer.observe(carousel);
+		});
+
+		// 2 - Building Animation played when entering the section
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const carousel = document.getElementById("carousel-03");
+			const sprite = document.querySelector("#carousel-03 .building-animation");
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					sprite.classList.add("play"); // Start animation
+				} else {
+					sprite.classList.remove("play"); // Reset so it replays next time
+				}
+				});
+			}, { threshold: 0.5 }); // Adjust threshold as needed
+
+			observer.observe(carousel);
+		});
+
+		// 3 - Building & Robots Animation played when entering the section
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const carousel = document.getElementById("carousel-04");
+			const sprite = document.querySelector("#carousel-04 .building-robot-animation");
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					sprite.classList.add("play"); // Start animation
+				} else {
+					sprite.classList.remove("play"); // Reset so it replays next time
+				}
+				});
+			}, { threshold: 0.5 }); // Adjust threshold as needed
+
+			observer.observe(carousel);
+		});
+
 
 		// Section 12 - Carousel 7
 		document.addEventListener("DOMContentLoaded", function () {
