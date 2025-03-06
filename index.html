@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Scroll Page</title>
+	<link href="https://fonts.googleapis.com/css2?family=Gellix:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+			font-family: 'Gellix', sans-serif;
+			scroll-behavior: smooth;
+		}
+
+		.top-spacing {
+			margin-top: 64px;
+		}
+
+		.top-spacing-m {
+			margin-top: 48px;
+		}
+
+        .content {
+            position: absolute;
+        }
+
+        #highlight-text, .text-highlight {
+            font-weight: 550;
+            font-size: 84px;
+            line-height: 90px;
+        }
+
+		.text-highlight {
+			display: block;
+		}
+
+		.video-text-highlight {
+			display: block;
+			font-weight: 550;
+			font-size: 57px;
+			line-height: 62px;
+		}
+
+        /* Style for the second text */
+        .second-text,  .text-top {
+            font-weight: 300;
+            line-height: 26px;
+            color: #000048; /* You can adjust this color if needed */
+            font-size: 20px;  /* Adjust the font size */
+        }
+
+		.bottom-text {
+			font-weight: 300;
+            line-height: 26px;
+            color: #000048; /* You can adjust this color if needed */
+            font-size: 20px;
+			margin-top: 20px;
+		}
+
+		.title-font, .bottom-title {
+            font-weight: 300;
+            line-height: 33px;
+            color: #000048; /* You can adjust this color if needed */
+            font-size: 27px;
+		}
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+
+        .visible {
+            opacity: 1 !important;
+        }
+
+        /* Updated button styles */
+        .discover-button {
+            background: #11C7CC; /* Button background color */
+            color: #000048; /* Text color */
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 20px;
+            display: inline-block;
+            opacity: 1;
+            transition: opacity 1s ease-in;
+            border-radius: 30px; /* Rounded edges */
+            position: relative;
+        }
+
+		.discover-button:hover {
+			background: #099A9E; /* Darker shade of the original color */
+		}
+
+        .discover-button.visible {
+            opacity: 1;
+        }
+
+        /* Positioning the icon inside the button */
+        .discover-button img {
+            width: 24px;  /* Adjust the icon size */
+            height: auto;
+            margin-left: 10px;  /* Space between text and icon */
+            vertical-align: middle;  /* Align icon with the text */
+        }
+
+        /* Style for the logo */
+        #logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 120px; /* Adjust the size as necessary */
+            height: auto;
+			z-index: 1;
+        }
+	
+		.text-block {
+			margin-bottom: 50px;
+		}
+	
+		.text-block:last-child {
+			margin-bottom: 0;
+		}
+
+		.content-wrapper {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			row-gap: 48px;
+		}
+
+		.header-font {
+			font-size: 84px;
+			font-weight: 550;
+		}
+
+		.black-text {
+			color: black;
+		}
+
+		.blue-text {
+			color: #2F78C4; /* Dark blue */
+		}
+
+		.visible {
+			opacity: 1 !important;
+		}
+
+		/* Overlay that appears after 2 seconds */
+		.overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+			opacity: 0;
+			transition: opacity 2s ease-in-out;
+		}
+
+		.white-text {
+			color: white;
+		}
+
+		.open-blue-text {
+			color: #26EFE9;
+		}
+
+		/* Carousel Styling ***************************************************************************/
+		#carousel {
+			overflow-y: auto;
+			display: flex;
+			flex-direction: column;
+			scroll-snap-type: y mandatory;
+			height: 100dvh;
+			overflow-y: scroll;
+			overscroll-behavior: contain;
+		}
+
+		.carousel-item {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			color: #fff;
+			font-size: 20px;
+			width: 100%;
+			min-height: 100dvh;
+			scroll-snap-align: start;
+			scroll-snap-stop: always;
+		}
+
+		.carousel-item-vertical {
+			scroll-snap-align: center;
+			display: flex;
+			flex-direction: column;
+			justify-content: end;
+			align-items: center;
+			text-align: center;
+			width: 100%;
+			min-height: 100dvh;
+    		row-gap: 40px;
+		}
+
+		.carousel-text {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			padding: 40px;
+			font-size: 24px;
+			height: 100%;
+		}
+
+		.carousel-item-padding-block {
+			padding: 60px 40px;
+		}
+
+		.carousel-text-center {
+			justify-content: center;
+		}
+
+		.carousel-text2 {
+			opacity: 0;
+			justify-content: center;
+			transform: translateY(30px);
+			transition: opacity 2.5s ease-out, transform 2.5s ease-out; /* Longer transition */
+		}
+
+		.carousel-text2.fade-in {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.carousel-bg-7 {
+			background-color: #000048;
+			min-height: 100dvh;
+		}
+
+		.text-top, .text-bottom {
+			max-width: 250px;
+			text-align: left;
+		}
+
+		.text-top-width {
+			max-width: 400px;
+		}
+
+		.text-top-width-2 {
+			max-width: 450px;
+		}
+
+		.text-bottom-reverse {
+			flex-direction: column-reverse;
+		}
+
+		.carousel-image {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.carousel-image img {
+			max-width: 100%;
+			max-height: 100%;
+			object-fit: cover;
+			height: 100dvh;
+		}
+
+		.numbered-list-text {
+            font-weight: 400;
+            line-height: 34px;
+            color: #000048; /* You can adjust this color if needed */
+            font-size: 15px;
+			text-align: left;
+			margin-left: -35px;
+		}
+
+		.numbered-list-text-highlighted {
+			color: #2F78C4;
+		}
+
+		.video-container {
+			position: relative;
+			width: 100%;
+			height: 100dvh; /* Full screen height */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+		}
+
+		.video-container video {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.carousel-text-video {
+			position: absolute;
+			text-align: center;
+			color: white;
+			font-size: 2rem;
+			font-weight: bold;
+			z-index: 2;
+		}
+
+		.carousel-text-video-bottom {
+			bottom: 20%;
+			text-align: left;
+		}
+
+		.overlay-carousel {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+		}
+
+		#carousel-9, #carousel-8 {
+			min-height: 100dvh;
+		}
+
+		.carousel-video {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 40px;
+			height: 100%;
+			background-color: #000048;
+		}
+
+		.carousel-last-section {
+			display: flex;
+			column-gap: 40px;
+		}
+
+		.last-section-title {
+			display: flex;
+			column-gap: 10px;
+			transform: translateY(100px);
+		}
+
+		/* Horizontal Carousel Style*/
+		#carousel-13 {
+			width: 100vw;
+			min-height: 100dvh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+		}
+
+		#horizontal-carousel-container {
+			width: 100vw;
+			min-height: 100dvh;
+			overflow-x: auto;
+			overflow-y: hidden;
+			scroll-snap-type: x mandatory;
+			display: flex;
+			flex-wrap: nowrap;
+		}
+
+		#horizontal-carousel {
+			display: flex;
+			width: 200vw;
+		}
+
+		.horizontal-container {
+			display: flex;
+			flex-direction: column;
+			row-gap: 20px;
+			align-items: center;
+		}
+
+		.horizontal-carousel-item {
+			width: 100vw;
+			height: 100dvh;
+			scroll-snap-align: start;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-evenly;
+		}
+
+		.horizontal-last-section-title {
+			font-size: 32px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+
+		.horizontal-carousel-last-section {
+			display: flex;
+			gap: 50px;
+			align-items: flex-start; /* align animation in center with text (special case: animation starts in left)*/
+		}
+
+		.horizontal-carousel-image img {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: auto;
+		}
+
+		.horizontal-last-section-image {
+			width: 25vw;
+		}
+
+		.last-section-container {
+			padding-inline: 10vw;
+		}
+
+		.arrow {
+			width: 80px;
+		}
+
+		.left-arrow-direction {
+			flex-flow: row-reverse;
+			margin-left: auto;
+			align-items: center;
+		}
+
+		.right-arrow-direction {
+			margin-right: auto;
+			align-items: center;
+		}
+		/* OrderedList Styles*/
+
+		ol {
+			list-style-type: none; /* Remove default numbers */
+			counter-reset: list-counter; /* Initialize a counter for the list items */
+		}
+
+		ol li {
+			counter-increment: list-counter; /* Increment the counter for each list item */
+		}
+
+		ol li::before {
+			content: counter(list-counter, decimal-leading-zero) ". "; /* Format the counter with leading zero */
+		}
+
+
+
+		/* Sections **************************************************^*/
+
+		/* Typing animation*/
+
+		.typing-container {
+			display: inline-block;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		.typing-text {
+			display: inline-block;
+			opacity: 0; /* Initially hidden */
+		}
+
+		.typing-container.active .typing-text {
+			animation: typing 1.5s steps(20) forwards;
+		}
+
+		@keyframes typing {
+			from {
+				width: 0;
+				opacity: 1;
+			}
+			to {
+				width: 100%;
+				opacity: 1;
+			}
+		}
+
+		/* People Animation*/
+		.people-animation {
+			width: 450px;
+			height: 100px;
+			background: url('assets/people-animation.png') 0 0 no-repeat;
+		}
+
+		.people-animation.play {
+			animation: play-sprite0 1.5s steps(9) forwards;
+		}
+
+		@keyframes play-sprite0 {
+			from { background-position: 0 0; }
+			to { background-position: -4050px 0; }
+		}
+
+		/* Brain Animation*/
+		.brain-animation {
+			margin-top: 24px;
+			width: 100px;
+			height: 110px;
+			background: url('assets/brain-animation.png') 0 0 no-repeat;
+		}
+
+		.brain-animation.play {
+			animation: play-sprite 2s steps(34) forwards;
+		}
+
+		@keyframes play-sprite {
+			from { background-position: 0 0; }
+			to { background-position: -3400px 0; }
+		}
+
+
+		/* Building Animation*/
+		.building-animation {
+			margin-top: 24px;
+			width: 350px;  /* Width of a single frame */
+			height: 110px;  /* Adjust height automatically */
+			background: url('assets/building-animation.png') 0 0 no-repeat;
+			}
+
+			.building-animation.play {
+			animation: play-sprite2 2s steps(32) forwards;
+			}
+
+			@keyframes play-sprite2 {
+			from { background-position: 0 0; }
+			to { background-position: -11200px 0; } /* Moves left by total width */
+		}
+
+		/* Building & Robots Animation*/
+		.building-robot-animation {
+			margin-top: 24px;
+			width: 330px;  /* Width of a single frame */
+			height: 240px;  /* Adjust height automatically */
+			background: url('assets/building-robot-animation.png') 0 0 no-repeat;
+			}
+
+			.building-robot-animation.play {
+			animation: play-sprite3 3s steps(81) forwards;
+			}
+
+			@keyframes play-sprite3 {
+			from { background-position: 0 0; }
+			to { background-position: -26730px 0; } /* Moves left by total width */
+		}
+    </style>
+</head>
+<body>
+	<!----------------***************** Carousel ***************** -->
+	<div id="carousel" class="snap vertical">
+		<div id="carousel-00" class="carousel-item">
+			<div class="video-container">
+				<!-- Logo added at the top-left corner -->
+				<img src="assets/Logo.png" alt="Logo" id="logo">
+
+				<video autoplay loop muted width="1920" height="1080">
+					<source src="assets/background.mov" type="video/mp4">
+				</video>
+				<div class="content">
+					<div>
+						<span class="black-text text-highlight">Unleash the Power of</span>
+						<span class="blue-text text-highlight">Human-AI Collaboration</span>
+					</div>
+					<p class="second-text top-spacing-m">AI Agents will become team members. Our Agentic Operating Model approach pairs human creativity with 
+						<br>AI precision, unlocking unparalleled efficiency, innovation, and adaptability.</p>
+					<button class="discover-button top-spacing-m" id="discover-button">
+						Discover Now
+						<img src="assets/button-Icon.png" alt="Arrow Icon">
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="carousel-video" class="carousel-item">
+			<div class="video-container">
+				<video autoplay loop muted width="1920" height="1080">
+					<source src="assets/second-section-video.mov" type="video/mp4">
+				</video>
+				<div class="overlay-carousel"></div>
+				<div class="carousel-text-video carousel-text2">
+					<h2 class="text-highlight">Breaking Barriers: Why <br>Traditional Work Models <br>​No Longer Work</h2>
+				</div>
+			</div>
+		</div>
+
+		<div id="1" class="carousel-item">
+			<div class="carousel-text carousel-text-center">
+			  <div class="text-top text-top-width">
+				<div class="text-block">
+					<h5 class="title-font">Inefficiency Limits Potential​</h5>
+					<p class="bottom-text">Traditional labor models rely on human-driven tasks or outsourcing, prioritizing cost savings over innovation. This approach creates bottlenecks, making it harder for businesses to scale and adapt to modern demands.</p>
+				</div>
+	
+				<div class="text-block">
+					<h5 class="title-font">Missing the Innovation Mar​k</h5>
+					<p class="bottom-text">Repetitive work consumes valuable time, leaving little room for creativity and strategy. Organizations struggle to harness data and streamline processes, leading to stagnant workflows and missed opportunities for growth.</p>
+				</div>
+	
+				<div class="text-block">
+					<h5 class="title-font">The Human-AI Gap​</h5>
+					<p class="bottom-text">Traditional systems fail to integrate AI effectively, overlooking the powerful synergy between human insight and AI precision. This disconnect prevents businesses from unlocking the full potential of technology-driven collaboration.</p>
+				</div>
+			  </div>
+			</div>
+			<div class="carousel-image"><img src="assets/section3.png" alt="Image 1"></div>
+		</div>
+		
+		
+		
+		<div id="carousel-01" class="carousel-item">
+			<div class="content-wrapper">
+				<h2 class="typing-container header-font">
+					<span class="typing-text">
+						<span class="black-text">From</span>
+						<span class="blue-text">Labor Arbitrage</span>
+					</span>
+				</h2>
+				<div class="people-animation"></div>
+			</div>
+		</div>
+
+		<div id="carousel-02" class="carousel-item carousel-typing">
+			<div class="content-wrapper">
+				<h2 class="typing-container header-font">
+					<span class="typing-text">
+						<span class="black-text">to ​</span>
+						<span class="blue-text">AI Arbitrage</span>
+					</span>
+				</h2>
+				<div class="brain-animation"></div>
+			</div>
+		</div>
+
+		<div id="carousel-03" class="carousel-item carousel-typing">
+			<div class="content-wrapper">
+				<h2 class="typing-container header-font">
+					<span class="typing-text">
+						<span class="black-text">From an ​</span>
+						<span class="blue-text">Agency Model</span>
+					</span>
+				</h2>
+				<div class="building-animation"></div>
+			</div>
+		</div>
+
+		<div id="carousel-04" class="carousel-item carousel-typing">
+			<div class="content-wrapper">
+				<h2 class="typing-container header-font">
+					<span class="typing-text">
+						<span class="black-text">to an ​</span>
+						<span class="blue-text">​Agentic Model</span>
+					</span>
+				</h2>
+				<div class="building-robot-animation"></div>
+			</div>
+		</div>
+
+		<div id="carousel-video" class="carousel-item">
+			<div class="video-container">
+				<video autoplay loop muted width="1920" height="1080">
+					<source src="assets/ocean.mp4" type="video/mp4">
+				</video>
+				<div class="overlay-carousel"></div>
+				<div class="carousel-text-video carousel-text2">
+					<h2 class="text-highlight">AI Empowerment: ​The Next <br>Era of Value Creation​</h2>
+				</div>
+			</div>
+		</div>
+
+		<div id="carousel-01" class="carousel-item">
+			<div class="carousel-text">
+			  <div class="text-top text-top-width-2">
+				<div class="text-block">
+					<h5 class="title-font">Future Teams Unite Human and AI​</h5>
+					<p class="bottom-text">Cross-functional roles, ethical AI committees, and AI team members – virtual ‘employees’ providing real-time insights, project suggestions, and automated reports – blend seamlessly with human colleagues to drive innovation, sustainability, and culturally adaptive solutions.​</p>
+				</div>
+	
+				<div class="text-block">
+					<h5 class="title-font">Foster Ecosystems and Innovation​</h5>
+					<p class="bottom-text">Future teams will partner closely with clients through real-time simulations, predictive modeling, and collaborative co-creation spaces. Their focus will extend beyond individual projects, emphasizing the development of long-term ecosystems that enable continuous innovation and iterative improvements.​</p>
+				</div>
+	
+				<div class="text-block">
+					<h5 class="title-font">Support continuous innovation​</h5>
+					<p class="bottom-text">Organizations leverage generative AI, predictive analytics, and immersive tools to streamline ideation, development, and optimization, enhancing efficiency and creativity. A human-in-the-loop ensures empathy and inclusivity, while AI tools deliver accessible, culturally resonant products for diverse user needs.</p>
+				</div>
+			  </div>
+			</div>
+			<div class="carousel-image"><img src="assets/standbild.jpg" alt="Image 1"></div>
+		</div>
+
+
+		<div id="carousel-7" class="carousel-item carousel-bg-7">
+			<div class="carousel-text carousel-text2" style="max-width: 1000px;">
+				<span class="white-text text-highlight">Unlock the Power of Synergy with</span>
+				<span class="open-blue-text text-highlight">the Agentic Operation Model</span>
+			</div>
+		</div>
+
+		<!-- <div class="carousel-item klevi">
+			<img src="assets/Benefits.png" alt="Image 1">
+		</div> -->
+
+		<div id="carousel-1" class="carousel-item">
+		  <div class="carousel-text carousel-item-padding-block">
+			<div class="text-top">
+			  <ol class="numbered-list-text">
+				<li class="numbered-list-text-highlighted">Efficiency & Focus</li>
+				<li>Scalability & Adaptability</li>
+				<li>Innovation</li>
+				<li>Collaboration</li>
+				<li>Inclusion & Cultural Adaption</li>
+				<li>Future Strategies</li>
+			  </ol>
+			</div>
+			<div class="text-bottom">
+			  <div class="bottom-title">Enhanced Efficiency and Focus</div>
+			  <div class="bottom-text">Automating repetitive tasks with AI agents allows individuals and teams to concentrate on high-value, strategic activities, boosting productivity and decision-making speed.</div>
+			</div>
+		  </div>
+		  <div class="carousel-image"><img src="assets/carousel1.jpg" alt="Image 1"></div>
+		</div>
+
+		<div id="carousel-2" class="carousel-item">
+		  <div class="carousel-text carousel-item-padding-block">
+			<div class="text-top">
+			  <ol class="numbered-list-text">
+				<li>Efficiency & Focus</li>
+				<li class="numbered-list-text-highlighted">Scalability & Adaptability</li>
+				<li>Innovation</li>
+				<li>Collaboration</li>
+				<li>Inclusion & Cultural Adaption</li>
+				<li>Future Strategies</li>
+			  </ol>
+			</div>
+			<div class="text-bottom">
+			  <div class="bottom-title">Scalability and Adaptability</div>
+			  <div class="bottom-text">The Agentic Model enables organizations to scale processes seamlessly and adapt to evolving business landscapes with AI-driven workflows.</div>
+			</div>
+		  </div>
+		  <div class="carousel-image"><img src="assets/carousel2.jpg" alt="Image 2"></div>
+		</div>
+
+		<div id="carousel-3" class="carousel-item">
+		  <div class="carousel-text carousel-item-padding-block">
+			<div class="text-top">
+			  <ol class="numbered-list-text">
+				<li>Efficiency & Focus</li>
+				<li>Scalability & Adaptability</li>
+				<li class="numbered-list-text-highlighted">Innovation</li>
+				<li>Collaboration</li>
+				<li>Inclusion & Cultural Adaption</li>
+				<li>Future Strategies</li>
+			  </ol>
+			</div>
+			<div class="text-bottom">
+			  <div class="bottom-title">Continuous Innovation</div>
+			  <div class="bottom-text">AI-powered tools ensure a steady flow of ideas, faster prototyping, and smarter optimization, allowing businesses to maintain a competitive edge in rapidly changing markets.</div>
+			</div>
+		  </div>
+		  <div class="carousel-image"><img src="assets/carousel3.jpg" alt="Image 3"></div>
+		</div>
+
+		<div id="carousel-4" class="carousel-item">
+		  <div class="carousel-text carousel-item-padding-block">
+			<div class="text-top">
+			  <ol class="numbered-list-text">
+				<li>Efficiency & Focus</li>
+				<li>Scalability & Adaptability</li>
+				<li>Innovation</li>
+				<li class="numbered-list-text-highlighted">Collaboration</li>
+				<li>Inclusion & Cultural Adaption</li>
+				<li>Future Strategies</li>
+			  </ol>
+			</div>
+			<div class="text-bottom">
+			  <div class="bottom-title">Improved Collaboration</div>
+			  <div class="bottom-text">By integrating human insight with AI capabilities, teams achieve new levels of creativity and innovation, driving sustainable value creation.</div>
+			</div>
+		  </div>
+		  <div class="carousel-image"><img src="assets/carousel4.jpg" alt="Image 4"></div>
+		</div>
+
+		<div id="carousel-5" class="carousel-item">
+		  <div class="carousel-text carousel-item-padding-block">
+			<div class="text-top">
+			  <ol class="numbered-list-text">
+				<li>Efficiency & Focus</li>
+				<li>Scalability & Adaptability</li>
+				<li>Innovation</li>
+				<li>Collaboration</li>
+				<li class="numbered-list-text-highlighted">Inclusion & Cultural Adaption</li>
+				<li>Future Strategies</li>
+			  </ol>
+			</div>
+			<div class="text-bottom">
+			  <div class="bottom-title">Culturally Relevant and Inclusive Solutions</div>
+			  <div class="bottom-text">AI tools trained on diverse datasets help businesses deliver inclusive, culturally adaptive products that resonate with a broad range of audiences.</div>
+			</div>
+		  </div>
+		  <div class="carousel-image"><img src="assets/carousel5.jpg" alt="Image 5"></div>
+		</div>
+
+		<div id="carousel-6" class="carousel-item">
+		  <div class="carousel-text carousel-item-padding-block">
+			<div class="text-top">
+			  <ol class="numbered-list-text">
+				<li>Efficiency & Focus</li>
+				<li>Scalability & Adaptability</li>
+				<li>Innovation</li>
+				<li>Collaboration</li>
+				<li>Inclusion & Cultural Adaption</li>
+				<li class="numbered-list-text-highlighted">Future Strategies</li>
+			  </ol>
+			</div>
+			<div class="text-bottom">
+			  <div class="bottom-title">Future-Proof Strategies</div>
+			  <div class="bottom-text">The Agentic Model prepares organizations for long-term success by blending technology with human expertise, ensuring resilience in a rapidly transforming digital world.</div>
+			</div>
+		  </div>
+		  <div class="carousel-image"><img src="assets/carousel6.jpg" alt="Image 6"></div>
+		</div>
+
+		<div id="carousel-7" class="carousel-item carousel-bg-7">
+			<div class="carousel-text carousel-text2">
+				<span class="white-text text-highlight">Shaping the</span> 
+				<span class="open-blue-text text-highlight">Preferable Future</span>
+			</div>
+		</div>
+
+		<div id="carousel-8" class="carousel-item">
+			<div class="carousel-text text-bottom-reverse">
+			  <div class="text-bottom">
+				<div class="bottom-text">In a world of rapidly evolving technologies, businesses must look beyond 
+					what is possible or plausible and focus on building the preferable future – one that empowers organizations, communities, and individuals. 
+					The Agentic Model embodies this vision, integrating human expertise with AI innovation to redefine work, strategy, and value creation.
+				</div>
+			  </div>
+			</div>
+			<div class="carousel-image carousel-video">
+				<video autoplay loop muted>
+					<source src="assets/cone-1.mp4" type="video/mp4">
+				</video>
+			</div>
+		</div>
+
+		<div id="carousel-9" class="carousel-item">
+			<div class="carousel-text text-bottom-reverse">
+			  <div class="text-bottom">
+				<div class="bottom-text">
+					The Futures Cone shows us that the future isn’t fixed; it’s shaped by our actions today. Our preferable 
+					future is one where technology and human creativity work in harmony, enabling organizations to …
+				</div>
+			  </div>
+			</div>
+			<div class="carousel-image carousel-video">
+				<video autoplay loop muted>
+					<source src="assets/cone-2.mp4" type="video/mp4">
+				</video>
+			</div>
+		</div>
+
+		<div id="carousel-10" class="carousel-item">
+			<div class="video-container">
+				<video autoplay loop muted width="1920" height="1080">
+					<source src="assets/bike-video.mp4" type="video/mp4">
+				</video>
+				<div class="overlay-carousel"></div>
+				<div class="carousel-text-video carousel-text-video-bottom">
+					<span class="white-text video-text-highlight">Achieve sustainable</span>
+					<span class="open-blue-text video-text-highlight">innovation and long-term growth.</span>
+				</div>
+			</div>
+		</div>
+
+		<div id="carousel-11" class="carousel-item">
+			<div class="video-container">
+				<video autoplay loop muted width="1920" height="1080">
+					<source src="assets/parkour-video.mov" type="video/mp4">
+				</video>
+				<div class="overlay-carousel"></div>
+				<div class="carousel-text-video carousel-text-video-bottom">
+					<span class="white-text video-text-highlight">Empower teams with AI team members to</span>
+					<span class="open-blue-text video-text-highlight">amplify productivity and creativity.</span>
+				</div>
+			</div>
+		</div>
+
+		<div id="carousel-12" class="carousel-item">
+			<div class="video-container">
+				<video autoplay loop muted width="1920" height="1080">
+					<source src="assets/snowboard-video.mov" type="video/mp4">
+				</video>
+				<div class="overlay-carousel"></div>
+				<div class="carousel-text-video carousel-text-video-bottom">
+					<span class="white-text video-text-highlight">Build adaptable, resilient systems</span>
+					<span class="open-blue-text video-text-highlight">that thrive in an ever-changing landscape.</span>
+				</div>
+			</div>
+		</div>
+
+		<div id="carousel-13" class="carousel-item-vertical">
+			<!-- Keep the title fixed for both Carousel slides-->
+			<div class="last-section-title">
+				<span class="text-highlight">Take the </span>
+				<span class="blue-text text-highlight">Next Step</span>  
+			  </div>
+			<div id="horizontal-carousel-container">
+				<div id="horizontal-carousel" class="horizontal-snap horizontal">
+				  <div class="horizontal-carousel-item" id="carousel-1">		
+					<div class="horizontal-carousel-last-section last-section-container">
+					  <div class="horizontal-carousel-image horizontal-container">
+						<img class="horizontal-last-section-image" src="assets/last-section-1.jpg" alt="Image 1">
+						<p class="title-font">See the Agentic Model in Action</p>
+						<p class="second-text">Explore our Supply Chain Demo at the booth and discover how AI-powered collaboration transforms 
+							supply chain operations for greater efficiency and adaptability.</p>
+						<div class="horizontal-carousel-last-section right-arrow-direction" style="display: none;">
+							<img class="arrow" src="assets/left-arrow.png" alt="Image 2">
+							<p>Explore the other screens</p>
+						</div>
+					  </div>
+					  <div class="horizontal-carousel-image horizontal-container">
+						<img class="horizontal-last-section-image" src="assets/last-section-2.jpg" alt="Image 2">
+						<p class="title-font">Discover Cognizant Neuro® Business Processes</p>
+						<p class="second-text">Find out how Cognizant Neuro® Business Processes simplifies and accelerates the adoption of automation 
+							and AI in the enterprise helping our clients deliver better experiences, more efficiently.
+						</p>
+						<div class="horizontal-carousel-last-section left-arrow-direction">
+							<img class="arrow" src="assets/right-arrow.png" alt="Image 2">
+							<p>Explore the other screens</p>
+						</div>
+					   </div>
+					</div>
+				  </div>
+		
+				  <div class="horizontal-carousel-item" id="carousel-1">		
+					<div class="horizontal-carousel-last-section last-section-container">
+					  <div class="horizontal-carousel-image horizontal-container">
+						<img class="horizontal-last-section-image" src="assets/last-section-image-2.jpg" alt="Image 1">
+						<p class="title-font">Experience our smart Search <br>Solution for Seamless Conversations</p>
+						<p class="second-text">Experience how we enhance semantic search with an intelligent chatbot, 
+							delivering more intuitive and engaging interactions.</p>
+						<div class="horizontal-carousel-last-section right-arrow-direction">
+							<img class="arrow" src="assets/left-arrow.png" alt="Image 2">
+							<p>Explore the other screens</p>
+						</div>
+					  </div>
+					  <div class="horizontal-carousel-image horizontal-container">
+						<img class="horizontal-last-section-image" src="assets/last-section-image-1.jpg" alt="Image 2">
+						<p class="title-font">Unlock the Full Power of AEP</p>
+						<p class="second-text">Discover how our innovations enhance Adobe Experience Platform, 
+							unlocking new capabilities for data-driven experiences.
+						</p>
+						<div class="horizontal-carousel-last-section left-arrow-direction" style="display: none;">
+							<img class="arrow" src="assets/right-arrow.png" alt="Image 2">
+							<p>Explore the other screens</p>
+						</div>
+					   </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+		</div>
+	</div>
+
+	<script>
+		document.getElementById("discover-button").addEventListener("click", function () {
+			const nextSection = document.getElementById("carousel-video"); // The next carousel item
+			nextSection.scrollIntoView({ behavior: "smooth" });
+		});
+
+		// *************** Stickman Copy Animation **********************
+		const onCarouselIntersection = (entries, observer) => {
+			entries.forEach(entry => {
+				const carouselItem = entry.target;
+
+				// If the carousel is in the viewport
+				if (entry.isIntersecting) {
+					console.log(`----${carouselItem.id} entered ---`);
+
+					// Check if class is already added to prevent re-triggering
+					if (!carouselItem.classList.contains("activated")) {
+						carouselItem.classList.add("activated"); // Mark as activated
+
+						// Trigger typing animation for the text by adding "active" to the parent container
+						const typingContainer = carouselItem.querySelector(".typing-container");
+						if (typingContainer) {
+							typingContainer.classList.add("active");
+						}
+					}
+				}
+			});
+		};
+
+		// Create an IntersectionObserver instance with a different name
+		const carouselObserver = new IntersectionObserver(onCarouselIntersection, {
+			threshold: 0.5 // Trigger when 50% of the element is visible
+		});
+
+		// Observe the carousel
+		const carouselItem = document.querySelector("#carousel-01");
+		carouselObserver.observe(carouselItem);
+
+		// ***************** END ***************************
+
+		// ************** Important function to deal with TYPING ANIMATION *************
+		
+		// IntersectionObserver callback function
+		const onIntersection = (entries, observer) => {
+			entries.forEach(entry => {
+			const carouselItem = entry.target;
+
+			// If the carousel is in the viewport
+			if (entry.isIntersecting) {
+				console.log(`----${carouselItem.id} entered ---`);
+
+				// Check if class is already added to prevent re-triggering
+				if (!carouselItem.classList.contains("activated")) {
+				carouselItem.classList.add("activated"); // Mark as activated
+
+				// Dynamically target the elements within each carousel
+				setTimeout(() => {
+					const typingContainer = carouselItem.querySelector(".typing-container");
+					if (typingContainer) typingContainer.classList.add("active");
+				}, 200);
+
+				setTimeout(() => {
+					const gif = carouselItem.querySelector(".gif");
+					if (gif) gif.classList.add("visible");
+				}, 500);
+				}
+			}
+			});
+		};
+
+		// Create an IntersectionObserver instance
+		const observer = new IntersectionObserver(onIntersection, {
+			threshold: 0.5 // Trigger when 50% of the element is visible
+		});
+
+		// Observe all carousel items
+		const carouselItems = document.querySelectorAll("#carousel-02, #carousel-03, #carousel-04");
+		carouselItems.forEach(carouselItem => {
+			observer.observe(carouselItem);
+		});
+
+
+        // ************************* END ******************************************
+
+		// 0 - People Animation played when entering the section
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const carousel = document.getElementById("carousel-01");
+			const sprite = document.querySelector("#carousel-01 .people-animation");
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					sprite.classList.add("play"); // Start animation
+				} else {
+					sprite.classList.remove("play"); // Reset so it replays next time
+				}
+				});
+			}, { threshold: 0.5 }); // Adjust threshold as needed
+
+			observer.observe(carousel);
+		});
+
+		// 1 - Brain Animation played when entering the section
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const carousel = document.getElementById("carousel-02");
+			const sprite = document.querySelector("#carousel-02 .brain-animation");
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					sprite.classList.add("play"); // Start animation
+				} else {
+					sprite.classList.remove("play"); // Reset so it replays next time
+				}
+				});
+			}, { threshold: 0.5 }); // Adjust threshold as needed
+
+			observer.observe(carousel);
+		});
+
+		// 2 - Building Animation played when entering the section
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const carousel = document.getElementById("carousel-03");
+			const sprite = document.querySelector("#carousel-03 .building-animation");
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					sprite.classList.add("play"); // Start animation
+				} else {
+					sprite.classList.remove("play"); // Reset so it replays next time
+				}
+				});
+			}, { threshold: 0.5 }); // Adjust threshold as needed
+
+			observer.observe(carousel);
+		});
+
+		// 3 - Building & Robots Animation played when entering the section
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const carousel = document.getElementById("carousel-04");
+			const sprite = document.querySelector("#carousel-04 .building-robot-animation");
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					sprite.classList.add("play"); // Start animation
+				} else {
+					sprite.classList.remove("play"); // Reset so it replays next time
+				}
+				});
+			}, { threshold: 0.5 }); // Adjust threshold as needed
+
+			observer.observe(carousel);
+		});
+
+
+		// Section 12 - Carousel 7
+		document.addEventListener("DOMContentLoaded", function () {
+			const textElements = document.querySelectorAll("#carousel-7 .carousel-text");
+
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("fade-in");
+						}
+					});
+				},
+				{ threshold: 0.3 }
+			);
+
+			textElements.forEach((element) => observer.observe(element));
+		});
+
+		// Video Fade-In Animation
+		document.addEventListener("DOMContentLoaded", function () {
+			const textElements = document.querySelectorAll("#carousel-video .carousel-text-video");
+
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("fade-in");
+						}
+					});
+				},
+				{ threshold: 0.3 }
+			);
+
+			textElements.forEach((element) => observer.observe(element));
+		});
+	</script>
+</body>
+</html>
