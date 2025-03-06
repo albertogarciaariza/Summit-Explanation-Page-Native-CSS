@@ -44,7 +44,7 @@
 
         /* Style for the second text */
         .second-text,  .text-top {
-            font-weight: 400;
+            font-weight: 300;
             line-height: 26px;
             color: #000048; /* You can adjust this color if needed */
             font-size: 20px;  /* Adjust the font size */
@@ -59,7 +59,7 @@
 		}
 
 		.title-font, .bottom-title {
-            font-weight: 400;
+            font-weight: 300;
             line-height: 33px;
             color: #000048; /* You can adjust this color if needed */
             font-size: 27px;
@@ -193,10 +193,6 @@
 			min-height: 100dvh;
 		}
 
-		.carousel-item-padding-block {
-			padding-block: 60px;
-		}
-
 		.carousel-item-vertical {
 			scroll-snap-align: center;
 			display: flex;
@@ -218,6 +214,10 @@
 			padding: 40px;
 			font-size: 24px;
 			height: 100%;
+		}
+
+		.carousel-item-padding-block {
+			padding: 60px 40px;
 		}
 
 		.carousel-text-center {
@@ -315,6 +315,7 @@
 
 		.carousel-text-video-bottom {
 			bottom: 20%;
+			text-align: left;
 		}
 
 		.overlay-carousel {
@@ -413,7 +414,6 @@
 			justify-content: center;
 			align-items: center;
 			height: auto;
-			border-radius: 10px;
 		}
 
 		.horizontal-last-section-image {
@@ -710,8 +710,8 @@
 			<img src="assets/Benefits.png" alt="Image 1">
 		</div> -->
 
-		<div id="carousel-1" class="carousel-item carousel-item-padding-block">
-		  <div class="carousel-text">
+		<div id="carousel-1" class="carousel-item">
+		  <div class="carousel-text carousel-item-padding-block">
 			<div class="text-top">
 			  <ol class="numbered-list-text">
 				<li class="numbered-list-text-highlighted">Efficiency & Focus</li>
@@ -730,8 +730,8 @@
 		  <div class="carousel-image"><img src="assets/carousel1.png" alt="Image 1"></div>
 		</div>
 
-		<div id="carousel-2" class="carousel-item carousel-item-padding-block">
-		  <div class="carousel-text">
+		<div id="carousel-2" class="carousel-item">
+		  <div class="carousel-text carousel-item-padding-block">
 			<div class="text-top">
 			  <ol class="numbered-list-text">
 				<li>Efficiency & Focus</li>
@@ -750,8 +750,8 @@
 		  <div class="carousel-image"><img src="assets/carousel2.png" alt="Image 2"></div>
 		</div>
 
-		<div id="carousel-3" class="carousel-item carousel-item-padding-block">
-		  <div class="carousel-text">
+		<div id="carousel-3" class="carousel-item">
+		  <div class="carousel-text carousel-item-padding-block">
 			<div class="text-top">
 			  <ol class="numbered-list-text">
 				<li>Efficiency & Focus</li>
@@ -770,8 +770,8 @@
 		  <div class="carousel-image"><img src="assets/carousel3.jpeg" alt="Image 3"></div>
 		</div>
 
-		<div id="carousel-4" class="carousel-item carousel-item-padding-block">
-		  <div class="carousel-text">
+		<div id="carousel-4" class="carousel-item">
+		  <div class="carousel-text carousel-item-padding-block">
 			<div class="text-top">
 			  <ol class="numbered-list-text">
 				<li>Efficiency & Focus</li>
@@ -790,8 +790,8 @@
 		  <div class="carousel-image"><img src="assets/carousel4.jpeg" alt="Image 4"></div>
 		</div>
 
-		<div id="carousel-5" class="carousel-item carousel-item-padding-block">
-		  <div class="carousel-text">
+		<div id="carousel-5" class="carousel-item">
+		  <div class="carousel-text carousel-item-padding-block">
 			<div class="text-top">
 			  <ol class="numbered-list-text">
 				<li>Efficiency & Focus</li>
@@ -810,8 +810,8 @@
 		  <div class="carousel-image"><img src="assets/carousel5.jpeg" alt="Image 5"></div>
 		</div>
 
-		<div id="carousel-6" class="carousel-item carousel-item-padding-block">
-		  <div class="carousel-text">
+		<div id="carousel-6" class="carousel-item">
+		  <div class="carousel-text carousel-item-padding-block">
 			<div class="text-top">
 			  <ol class="numbered-list-text">
 				<li>Efficiency & Focus</li>
@@ -885,7 +885,7 @@
 		<div id="carousel-11" class="carousel-item">
 			<div class="video-container">
 				<video autoplay loop muted width="1920" height="1080">
-					<source src="assets/parkour-video.mp4" type="video/mp4">
+					<source src="assets/parkour-video.mov" type="video/mp4">
 				</video>
 				<div class="overlay-carousel"></div>
 				<div class="carousel-text-video carousel-text-video-bottom">
