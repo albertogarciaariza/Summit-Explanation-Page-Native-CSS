@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animated Scroll Page</title>
+	<link href="https://fonts.googleapis.com/css2?family=Gellix:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-			font-family: Arial, sans-serif;
+			font-family: 'Gellix', sans-serif;
 			scroll-behavior: smooth;
 		}
 
@@ -19,46 +21,44 @@
 			margin-top: 48px;
 		}
 
-        .section {
-            height: 100dvh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            text-align: center;
-        }
-
         .content {
             position: absolute;
         }
 
-        h1 {
-            font-family: 'Gellix', sans-serif;  /* Use Gellix font */
-            font-weight: 600;
+        #highlight-text, .text-highlight {
+            font-weight: 550;
             font-size: 84px;
             line-height: 85px;
-            margin-bottom: 20px;
-            color: black;
         }
 
-        #highlight-text, .text-highlight {
-            font-family: 'Gellix', sans-serif;  /* Use Gellix font */
-            font-weight: 600;
-            font-size: 84px;
-            line-height: 85px;
-        }
+		.text-highlight {
+			display: block;
+		}
+
+		.video-text-highlight {
+			display: block;
+			font-weight: 550;
+			font-size: 57px;
+			line-height: 62px;
+		}
 
         /* Style for the second text */
-        .second-text,  .text-top, .bottom-text {
-            font-family: 'Gellix', sans-serif;  /* Use Gellix font */
+        .second-text,  .text-top {
             font-weight: 400;
             line-height: 26px;
             color: #000048; /* You can adjust this color if needed */
             font-size: 20px;  /* Adjust the font size */
         }
 
+		.bottom-text {
+			font-weight: 300;
+            line-height: 26px;
+            color: #000048; /* You can adjust this color if needed */
+            font-size: 20px;
+			margin-top: 20px;
+		}
+
 		.title-font, .bottom-title {
-			font-family: 'Gellix', sans-serif;  /* Use Gellix font */
             font-weight: 400;
             line-height: 33px;
             color: #000048; /* You can adjust this color if needed */
@@ -68,11 +68,6 @@
         .fade-in {
             opacity: 0;
             transition: opacity 1s ease-in;
-            color: #007BFF;
-            font-family: 'Gellix', sans-serif;  /* Use Gellix font */
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 26px;
         }
 
         .visible {
@@ -86,9 +81,8 @@
             padding: 12px 24px;
             border: none;
             cursor: pointer;
-            font-family: 'Gellix', sans-serif;  /* Use Gellix font */
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 400;
             line-height: 20px;
             display: inline-block;
             opacity: 1;
@@ -122,28 +116,9 @@
             height: auto;
 			z-index: 1;
         }
-
-		/* Initially hide text content */
-		.text-content {
-			position: absolute;
-			color: #FFFFFF;
-			font-family: 'Gellix', sans-serif;
-			font-weight: 400;
-			font-size: 84px;
-			line-height: 85px;
-			text-align: center;
-			z-index: 10;
-			opacity: 0; /* Hide text initially */
-			transition: opacity 1s ease-in;
-		}
-
-		/* When active, fade in the text */
-		.text-content.active {
-			opacity: 1 !important;
-		}
 	
 		.text-block {
-			margin-bottom: 64px;
+			margin-bottom: 50px;
 		}
 	
 		.text-block:last-child {
@@ -155,11 +130,12 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
+			row-gap: 48px;
 		}
 
 		.header-font {
-			font-size: 48px;
-			font-weight: bold;
+			font-size: 84px;
+			font-weight: 550;
 		}
 
 		.black-text {
@@ -186,29 +162,12 @@
 			transition: opacity 2s ease-in-out;
 		}
 
-		/* Centered white text */
-		.centered-text {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			width: 100%;
-			transform: translate(-50%, -50%);
-			font-family: 'Gellix', sans-serif;
-			font-weight: 400;
-			font-size: 84px;
-			line-height: 85px;
-			color: white;
-			z-index: 1; /* Ensures the text is in front of the overlay */
-			opacity: 0; /* Start hidden */
-			transition: opacity 1s ease-in-out; /* Smooth transition for fading */
-			}
-
 		.white-text {
 			color: white;
 		}
 
 		.open-blue-text {
-			color: #3ACFE8;
+			color: #26EFE9;
 		}
 
 		/* Carousel Styling ***************************************************************************/
@@ -234,6 +193,10 @@
 			min-height: 100dvh;
 		}
 
+		.carousel-item-padding-block {
+			padding-block: 60px;
+		}
+
 		.carousel-item-vertical {
 			scroll-snap-align: center;
 			display: flex;
@@ -255,6 +218,10 @@
 			padding: 40px;
 			font-size: 24px;
 			height: 100%;
+		}
+
+		.carousel-text-center {
+			justify-content: center;
 		}
 
 		.carousel-text2 {
@@ -283,12 +250,12 @@
 			max-width: 400px;
 		}
 
-		.text-bottom-reverse {
-			flex-direction: column-reverse;
+		.text-top-width-2 {
+			max-width: 450px;
 		}
 
-		.bottom-text {
-			margin-top: 20px;
+		.text-bottom-reverse {
+			flex-direction: column-reverse;
 		}
 
 		.carousel-image {
@@ -306,9 +273,8 @@
 		}
 
 		.numbered-list-text {
-			font-family: 'Gellix', sans-serif;  /* Use Gellix font */
             font-weight: 400;
-            line-height: 20px;
+            line-height: 24px;
             color: #000048; /* You can adjust this color if needed */
             font-size: 15px;
 			text-align: left;
@@ -348,11 +314,7 @@
 		}
 
 		.carousel-text-video-bottom {
-			bottom: 10%;
-		}
-
-		.text-highlight {
-			display: block;
+			bottom: 20%;
 		}
 
 		.overlay-carousel {
@@ -525,7 +487,6 @@
 
 		/* People Animation*/
 		.people-animation {
-			margin-top: 24px;
 			width: 450px;
 			height: 100px;
 			background: url('assets/people-animation.png') 0 0 no-repeat;
@@ -591,10 +552,6 @@
 			from { background-position: 0 0; }
 			to { background-position: -26730px 0; } /* Moves left by total width */
 		}
-
-		#carousel-04 .content-wrapper {
-			align-items: flex-start;
-		}
     </style>
 </head>
 <body>
@@ -636,21 +593,21 @@
 		</div>
 
 		<div id="1" class="carousel-item">
-			<div class="carousel-text">
+			<div class="carousel-text carousel-text-center">
 			  <div class="text-top text-top-width">
 				<div class="text-block">
-					<h3>Inefficiency Limits Potential​</h3>
-					<p class="second-text">Traditional labor models rely on human-driven tasks or outsourcing, prioritizing cost savings over innovation. This approach creates bottlenecks, making it harder for businesses to scale and adapt to modern demands.</p>
+					<h5 class="title-font">Inefficiency Limits Potential​</h5>
+					<p class="bottom-text">Traditional labor models rely on human-driven tasks or outsourcing, prioritizing cost savings over innovation. This approach creates bottlenecks, making it harder for businesses to scale and adapt to modern demands.</p>
 				</div>
 	
 				<div class="text-block">
-					<h3>Missing the Innovation Mar​k</h3>
-					<p class="second-text">Repetitive work consumes valuable time, leaving little room for creativity and strategy. Organizations struggle to harness data and streamline processes, leading to stagnant workflows and missed opportunities for growth.</p>
+					<h5 class="title-font">Missing the Innovation Mar​k</h5>
+					<p class="bottom-text">Repetitive work consumes valuable time, leaving little room for creativity and strategy. Organizations struggle to harness data and streamline processes, leading to stagnant workflows and missed opportunities for growth.</p>
 				</div>
 	
 				<div class="text-block">
-					<h3>The Human-AI Gap​</h3>
-					<p class="second-text">Traditional systems fail to integrate AI effectively, overlooking the powerful synergy between human insight and AI precision. This disconnect prevents businesses from unlocking the full potential of technology-driven collaboration.</p>
+					<h5 class="title-font">The Human-AI Gap​</h5>
+					<p class="bottom-text">Traditional systems fail to integrate AI effectively, overlooking the powerful synergy between human insight and AI precision. This disconnect prevents businesses from unlocking the full potential of technology-driven collaboration.</p>
 				</div>
 			  </div>
 			</div>
@@ -721,20 +678,20 @@
 
 		<div id="carousel-01" class="carousel-item">
 			<div class="carousel-text">
-			  <div class="text-top text-top-width">
+			  <div class="text-top text-top-width-2">
 				<div class="text-block">
-					<h3>Future Teams Unite Human and AI​</h3>
-					<p class="second-text">Cross-functional roles, ethical AI committees, and AI team members – virtual ‘employees’ providing real-time insights, project suggestions, and automated reports – blend seamlessly with human colleagues to drive innovation, sustainability, and culturally adaptive solutions.​</p>
+					<h5 class="title-font">Future Teams Unite Human and AI​</h5>
+					<p class="bottom-text">Cross-functional roles, ethical AI committees, and AI team members – virtual ‘employees’ providing real-time insights, project suggestions, and automated reports – blend seamlessly with human colleagues to drive innovation, sustainability, and culturally adaptive solutions.​</p>
 				</div>
 	
 				<div class="text-block">
-					<h3>Foster Ecosystems and Innovation​</h3>
-					<p class="second-text">Future teams will partner closely with clients through real-time simulations, predictive modeling, and collaborative co-creation spaces. Their focus will extend beyond individual projects, emphasizing the development of long-term ecosystems that enable continuous innovation and iterative improvements.​</p>
+					<h5 class="title-font">Foster Ecosystems and Innovation​</h5>
+					<p class="bottom-text">Future teams will partner closely with clients through real-time simulations, predictive modeling, and collaborative co-creation spaces. Their focus will extend beyond individual projects, emphasizing the development of long-term ecosystems that enable continuous innovation and iterative improvements.​</p>
 				</div>
 	
 				<div class="text-block">
-					<h3>Support continuous innovation​</h3>
-					<p class="second-text">Organizations leverage generative AI, predictive analytics, and immersive tools to streamline ideation, development, and optimization, enhancing efficiency and creativity. A human-in-the-loop ensures empathy and inclusivity, while AI tools deliver accessible, culturally resonant products for diverse user needs.</p>
+					<h5 class="title-font">Support continuous innovation​</h5>
+					<p class="bottom-text">Organizations leverage generative AI, predictive analytics, and immersive tools to streamline ideation, development, and optimization, enhancing efficiency and creativity. A human-in-the-loop ensures empathy and inclusivity, while AI tools deliver accessible, culturally resonant products for diverse user needs.</p>
 				</div>
 			  </div>
 			</div>
@@ -743,7 +700,7 @@
 
 
 		<div id="carousel-7" class="carousel-item carousel-bg-7">
-			<div class="carousel-text carousel-text2">
+			<div class="carousel-text carousel-text2" style="max-width: 1000px;">
 				<span class="white-text text-highlight">Unlock the Power of Synergy with the</span>
 				<span class="open-blue-text text-highlight">the Agentic Operation Model</span>
 			</div>
@@ -753,7 +710,7 @@
 			<img src="assets/Benefits.png" alt="Image 1">
 		</div> -->
 
-		<div id="carousel-1" class="carousel-item">
+		<div id="carousel-1" class="carousel-item carousel-item-padding-block">
 		  <div class="carousel-text">
 			<div class="text-top">
 			  <ol class="numbered-list-text">
@@ -773,7 +730,7 @@
 		  <div class="carousel-image"><img src="assets/carousel1.png" alt="Image 1"></div>
 		</div>
 
-		<div id="carousel-2" class="carousel-item">
+		<div id="carousel-2" class="carousel-item carousel-item-padding-block">
 		  <div class="carousel-text">
 			<div class="text-top">
 			  <ol class="numbered-list-text">
@@ -793,7 +750,7 @@
 		  <div class="carousel-image"><img src="assets/carousel2.png" alt="Image 2"></div>
 		</div>
 
-		<div id="carousel-3" class="carousel-item">
+		<div id="carousel-3" class="carousel-item carousel-item-padding-block">
 		  <div class="carousel-text">
 			<div class="text-top">
 			  <ol class="numbered-list-text">
@@ -810,10 +767,10 @@
 			  <div class="bottom-text">AI-powered tools ensure a steady flow of ideas, faster prototyping, and smarter optimization, allowing businesses to maintain a competitive edge in rapidly changing markets.</div>
 			</div>
 		  </div>
-		  <div class="carousel-image"><img src="assets/carousel3.png" alt="Image 3"></div>
+		  <div class="carousel-image"><img src="assets/carousel3.jpeg" alt="Image 3"></div>
 		</div>
 
-		<div id="carousel-4" class="carousel-item">
+		<div id="carousel-4" class="carousel-item carousel-item-padding-block">
 		  <div class="carousel-text">
 			<div class="text-top">
 			  <ol class="numbered-list-text">
@@ -830,10 +787,10 @@
 			  <div class="bottom-text">By integrating human insight with AI capabilities, teams achieve new levels of creativity and innovation, driving sustainable value creation.</div>
 			</div>
 		  </div>
-		  <div class="carousel-image"><img src="assets/carousel4.png" alt="Image 4"></div>
+		  <div class="carousel-image"><img src="assets/carousel4.jpeg" alt="Image 4"></div>
 		</div>
 
-		<div id="carousel-5" class="carousel-item">
+		<div id="carousel-5" class="carousel-item carousel-item-padding-block">
 		  <div class="carousel-text">
 			<div class="text-top">
 			  <ol class="numbered-list-text">
@@ -850,10 +807,10 @@
 			  <div class="bottom-text">AI tools trained on diverse datasets help businesses deliver inclusive, culturally adaptive products that resonate with a broad range of audiences.</div>
 			</div>
 		  </div>
-		  <div class="carousel-image"><img src="assets/carousel5.png" alt="Image 5"></div>
+		  <div class="carousel-image"><img src="assets/carousel5.jpeg" alt="Image 5"></div>
 		</div>
 
-		<div id="carousel-6" class="carousel-item">
+		<div id="carousel-6" class="carousel-item carousel-item-padding-block">
 		  <div class="carousel-text">
 			<div class="text-top">
 			  <ol class="numbered-list-text">
@@ -870,7 +827,7 @@
 			  <div class="bottom-text">The Agentic Model prepares organizations for long-term success by blending technology with human expertise, ensuring resilience in a rapidly transforming digital world.</div>
 			</div>
 		  </div>
-		  <div class="carousel-image"><img src="assets/carousel6.png" alt="Image 6"></div>
+		  <div class="carousel-image"><img src="assets/carousel6.jpeg" alt="Image 6"></div>
 		</div>
 
 		<div id="carousel-7" class="carousel-item carousel-bg-7">
@@ -919,8 +876,8 @@
 				</video>
 				<div class="overlay-carousel"></div>
 				<div class="carousel-text-video carousel-text-video-bottom">
-					<span class="white-text text-highlight">Achieve sustainable</span>
-					<span class="open-blue-text text-highlight">innovation and long-term growth.</span>
+					<span class="white-text video-text-highlight">Achieve sustainable</span>
+					<span class="open-blue-text video-text-highlight">innovation and long-term growth.</span>
 				</div>
 			</div>
 		</div>
@@ -932,8 +889,8 @@
 				</video>
 				<div class="overlay-carousel"></div>
 				<div class="carousel-text-video carousel-text-video-bottom">
-					<span class="white-text text-highlight">Empower teams with AI team members to</span>
-					<span class="open-blue-text text-highlight">amplify productivity and creativity.</span>
+					<span class="white-text video-text-highlight">Empower teams with AI team members to</span>
+					<span class="open-blue-text video-text-highlight">amplify productivity and creativity.</span>
 				</div>
 			</div>
 		</div>
@@ -941,12 +898,12 @@
 		<div id="carousel-12" class="carousel-item">
 			<div class="video-container">
 				<video autoplay loop muted width="1920" height="1080">
-					<source src="assets/snowboard-video.mp4" type="video/mp4">
+					<source src="assets/snowboard-video.mov" type="video/mp4">
 				</video>
 				<div class="overlay-carousel"></div>
 				<div class="carousel-text-video carousel-text-video-bottom">
-					<span class="white-text text-highlight">Build adaptable, resilient systems</span>
-					<span class="open-blue-text text-highlight">that thrive in an ever-changing landscape.</span>
+					<span class="white-text video-text-highlight">Build adaptable, resilient systems</span>
+					<span class="open-blue-text video-text-highlight">that thrive in an ever-changing landscape.</span>
 				</div>
 			</div>
 		</div>
@@ -998,7 +955,7 @@
 						</div>
 					  </div>
 					  <div class="horizontal-carousel-image horizontal-container">
-						<img class="horizontal-last-section-image" src="assets/last-section-image-2.png" alt="Image 2">
+						<img class="horizontal-last-section-image" src="assets/last-section-image-2.jpeg" alt="Image 2">
 						<p class="title-font">Unlock the Full Power of AEP</p>
 						<p class="second-text">Discover how our innovations enhance Adobe Experience Platform, 
 							unlocking new capabilities for data-driven experiences.
