@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animated Scroll Page</title>
-	<link href="https://fonts.googleapis.com/css2?family=Gellix:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1197,6 +1196,27 @@
 
 			textElements.forEach((element) => observer.observe(element));
 		});
+
+		// Script to refresh the site and go on the top of the page - when user is inactive for 1minute
+
+		let inactivityTime = 10000; // 1 minute
+		let timeout;
+
+		function resetTimer() {
+			clearTimeout(timeout);
+			timeout = setTimeout(() => {
+				window.scrollTo(0, 0); // Scroll to top
+				location.reload(); // Refresh the page
+			}, inactivityTime);
+		}
+
+		// Reset the timer on user activity
+		document.addEventListener("mousemove", resetTimer);
+		document.addEventListener("keypress", resetTimer);
+		document.addEventListener("scroll", resetTimer);
+		document.addEventListener("click", resetTimer);
+
+		document.addEventListener("DOMContentLoaded", resetTimer);
 	</script>
 </body>
 </html>
