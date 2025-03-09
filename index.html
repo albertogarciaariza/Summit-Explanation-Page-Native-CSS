@@ -158,7 +158,7 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			row-gap: 48px;
+			row-gap: 60px;
 		}
 
 		.header-font {
@@ -237,7 +237,7 @@
 
 		.carousel-last-item {
 			flex-direction: column; 
-			justify-content: space-around;
+			justify-content: center;
 		}
 
 		.carousel-text {
@@ -385,7 +385,6 @@
 		.last-section-title {
 			display: flex;
 			column-gap: 10px;
-			transform: translateY(100px);
 		}
 
 		/* Horizontal Carousel Style*/
@@ -451,10 +450,6 @@
 			justify-content: center;
 			align-items: center;
 			height: auto;
-		}
-
-		.horizontal-last-section-image {
-			width: 25vw;
 		}
 
 		.last-section-container {
@@ -907,7 +902,7 @@
 		<div id="carousel-10" class="carousel-item">
 			<div class="video-container">
 				<video autoplay loop muted width="1920" height="1080">
-					<source src="assets/bike-video.mp4" type="video/mp4">
+					<source src="assets/bike-video.mov" type="video/mp4">
 				</video>
 				<div class="overlay-carousel"></div>
 				<div class="carousel-text-video carousel-text-video-bottom">
@@ -1185,9 +1180,9 @@
 			textElements.forEach((element) => observer.observe(element));
 		});
 
-		// Script to refresh the site and go on the top of the page - when user is inactive for 1minute
+		// Script to refresh the site and go on the top of the page - when user is inactive for 2 minutes
 
-		let inactivityTime = 60000; // 1 minute
+		let inactivityTime = 120000; // 2 minutes
 		let timeout;
 
 		function resetTimer() {
