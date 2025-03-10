@@ -597,8 +597,8 @@
 				<!-- Logo added at the top-left corner -->
 				<img src="assets/Logo.png" alt="Logo" id="logo">
 
-				<video autoplay loop muted width="1920" height="1080">
-					<source src="assets/background.webm" type="video/mp4">
+				<video preload="auto" autoplay loop muted width="1920" height="1080">
+					<source src="assets/background.webm" type="video/webm">
 				</video>
 				<div class="content">
 					<div>
@@ -617,8 +617,8 @@
 
 		<div id="carousel-video" class="carousel-item">
 			<div class="video-container">
-				<video autoplay loop muted width="1920" height="1080">
-					<source src="assets/second-section-video.webm" type="video/mp4">
+				<video preload="auto" autoplay loop muted width="1920" height="1080">
+					<source src="assets/second-section-video.webm" type="video/webm">
 				</video>
 				<div class="overlay-carousel"></div>
 				<div class="carousel-text-video carousel-text2">
@@ -699,8 +699,8 @@
 
 		<div id="carousel-video" class="carousel-item">
 			<div class="video-container">
-				<video autoplay loop muted width="1920" height="1080">
-					<source src="assets/ocean.webm" type="video/mp4">
+				<video preload="auto" autoplay loop muted width="1920" height="1080">
+					<source src="assets/ocean.webm" type="video/webm">
 				</video>
 				<div class="overlay-carousel"></div>
 				<div class="carousel-text-video carousel-text2">
@@ -880,7 +880,7 @@
 			  </div>
 			</div>
 			<div class="carousel-image carousel-video">
-				<video autoplay loop muted>
+				<video preload="auto" autoplay loop muted>
 					<source src="assets/cone-1.mp4" type="video/mp4">
 				</video>
 			</div>
@@ -896,7 +896,7 @@
 			  </div>
 			</div>
 			<div class="carousel-image carousel-video">
-				<video autoplay loop muted>
+				<video preload="auto" autoplay loop muted>
 					<source src="assets/cone-2.mp4" type="video/mp4">
 				</video>
 			</div>
@@ -904,8 +904,8 @@
 
 		<div id="carousel-10" class="carousel-item">
 			<div class="video-container">
-				<video autoplay loop muted width="1920" height="1080">
-					<source src="assets/bike-video.webm" type="video/mp4">
+				<video preload="auto" autoplay loop muted width="1920" height="1080">
+					<source src="assets/bike-video.webm" type="video/webm">
 				</video>
 				<div class="overlay-carousel"></div>
 				<div class="carousel-text-video carousel-text-video-bottom">
@@ -917,8 +917,8 @@
 
 		<div id="carousel-11" class="carousel-item">
 			<div class="video-container">
-				<video autoplay loop muted width="1920" height="1080">
-					<source src="assets/parkour-video.webm" type="video/mp4">
+				<video preload="auto" autoplay loop muted width="1920" height="1080">
+					<source src="assets/parkour-video.webm" type="video/webm">
 				</video>
 				<div class="overlay-carousel"></div>
 				<div class="carousel-text-video carousel-text-video-bottom">
@@ -930,8 +930,8 @@
 
 		<div id="carousel-12" class="carousel-item">
 			<div class="video-container">
-				<video autoplay loop muted width="1920" height="1080">
-					<source src="assets/snowboard-video.webm" type="video/mp4">
+				<video preload="auto" autoplay loop muted width="1920" height="1080">
+					<source src="assets/snowboard-video.webm" type="video/webm">
 				</video>
 				<div class="overlay-carousel"></div>
 				<div class="carousel-text-video carousel-text-video-bottom">
@@ -941,7 +941,7 @@
 			</div>
 		</div>
 
-		<div id="carousel-15" class="carousel-item carousel-last-item">
+		<div id="carousel-13" class="carousel-item carousel-last-item">
 			<div class="last-section-title">
 				<span class="black-text text-highlight">Take the </span>
 				<span class="blue-text text-highlight">Next Step</span>  
@@ -963,7 +963,7 @@
 			  </div>
 		</div>
 
-		<div id="carousel-16" class="carousel-item carousel-last-item">
+		<div id="carousel-14" class="carousel-item carousel-last-item">
 			<div class="horizontal-carousel-last-section">
 				<div class="horizontal-carousel-image horizontal-container">
 				  <img class="horizontal-last-section-image" src="assets/last-section-image-2.jpg" alt="Image 1">
@@ -977,7 +977,7 @@
 				</div>
 				<div class="horizontal-carousel-image horizontal-container">
 				  <img class="horizontal-last-section-image" src="assets/last-section-image-1.jpg" alt="Image 2">
-				  <p class="title-font">Unlock the Full Power of AEP</p>
+				  <p class="title-font">Unlock the Full Power of Adobe Experience Platform</p>
 				  <p class="second-text">Discover how our innovations enhance Adobe Experience Platform, 
 					  unlocking new capabilities for data-driven experiences.
 				  </p>
@@ -995,218 +995,148 @@
 			const nextSection = document.getElementById("carousel-video"); // The next carousel item
 			nextSection.scrollIntoView({ behavior: "smooth" });
 		});
-
-		// *************** Stickman Copy Animation **********************
-		const onCarouselIntersection = (entries, observer) => {
-			entries.forEach(entry => {
-				const carouselItem = entry.target;
-
-				// If the carousel is in the viewport
-				if (entry.isIntersecting) {
-					console.log(`----${carouselItem.id} entered ---`);
-
-					// Check if class is already added to prevent re-triggering
-					if (!carouselItem.classList.contains("activated")) {
-						carouselItem.classList.add("activated"); // Mark as activated
-
-						// Trigger typing animation for the text by adding "active" to the parent container
-						const typingContainer = carouselItem.querySelector(".typing-container");
-						if (typingContainer) {
-							typingContainer.classList.add("active");
-						}
-					}
-				}
-			});
-		};
-
-		// Create an IntersectionObserver instance with a different name
-		const carouselObserver = new IntersectionObserver(onCarouselIntersection, {
-			threshold: 0.5 // Trigger when 50% of the element is visible
-		});
-
-		// Observe the carousel
-		const carouselItem = document.querySelector("#carousel-01");
-		carouselObserver.observe(carouselItem);
-
-		// ***************** END ***************************
-
-		// ************** Important function to deal with TYPING ANIMATION *************
 		
-		// IntersectionObserver callback function
-		const onIntersection = (entries, observer) => {
-			entries.forEach(entry => {
-			const carouselItem = entry.target;
-
-			// If the carousel is in the viewport
-			if (entry.isIntersecting) {
-				console.log(`----${carouselItem.id} entered ---`);
-
-				// Check if class is already added to prevent re-triggering
-				if (!carouselItem.classList.contains("activated")) {
-				carouselItem.classList.add("activated"); // Mark as activated
-
-				// Dynamically target the elements within each carousel
-				setTimeout(() => {
-					const typingContainer = carouselItem.querySelector(".typing-container");
-					if (typingContainer) typingContainer.classList.add("active");
-				}, 200);
-
-				setTimeout(() => {
-					const gif = carouselItem.querySelector(".gif");
-					if (gif) gif.classList.add("visible");
-				}, 500);
+		// Unified IntersectionObserver for all animations
+		// divide animations in groups, and perform them when IntersectionObserver occurs
+		document.addEventListener("DOMContentLoaded", () => {
+			// Configuration object for different animation types
+			const animationConfig = {
+				// Typing animations
+				"typing": {
+					selector: ".typing-container",
+					class: "active",
+					threshold: 0.5,
+					targets: ["#carousel-01", "#carousel-02", "#carousel-03", "#carousel-04"]
+				},
+				// Sprite animations
+				"sprite": [
+					{
+						targetId: "#carousel-01",
+						spriteSelector: ".people-animation",
+						class: "play",
+						threshold: 0.5
+					},
+					{
+						targetId: "#carousel-02",
+						spriteSelector: ".brain-animation",
+						class: "play",
+						threshold: 0.5
+					},
+					{
+						targetId: "#carousel-03",
+						spriteSelector: ".building-animation",
+						class: "play",
+						threshold: 0.5
+					},
+					{
+						targetId: "#carousel-04",
+						spriteSelector: ".building-robot-animation",
+						class: "play",
+						threshold: 0.5
+					}
+				],
+				// Fade-in animations
+				"fadeIn": {
+					selector: ".carousel-text, .carousel-text-video",
+					class: "fade-in",
+					threshold: 0.3,
+					targets: ["#carousel-7", "#carousel-video"]
 				}
-			}
+			};
+			
+			// Create a single IntersectionObserver
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					const element = entry.target;
+					
+					if (entry.isIntersecting) {
+						// Handle typing animations - replay each time user passes the slide
+						const typingContainer = element.querySelector(".typing-container");
+						if (typingContainer) {
+							// First remove the class if it exists
+							typingContainer.classList.remove("active");
+							
+							// Force a reflow before adding the class again
+							void typingContainer.offsetWidth;
+							
+							// Add the class after a short delay
+							setTimeout(() => {
+								typingContainer.classList.add("active");
+							}, 200);
+						}
+						
+						// Handle sprite animations - every time element comes into view
+						animationConfig.sprite.forEach(spriteConfig => {
+							if (element.matches(spriteConfig.targetId)) {
+								const sprite = element.querySelector(spriteConfig.spriteSelector);
+								if (sprite) {
+									sprite.classList.add(spriteConfig.class);
+								}
+							}
+						});
+						
+						// Handle fade-in animations - only once
+						if (!element.classList.contains("activated-fade") && 
+							element.matches("#carousel-7, #carousel-video")) {
+							element.classList.add("activated-fade");
+							const fadeElements = element.querySelectorAll(animationConfig.fadeIn.selector);
+							fadeElements.forEach(fadeEl => {
+								fadeEl.classList.add(animationConfig.fadeIn.class);
+							});
+						}
+						
+					} else {
+						// Reset animations when out of view
+						// Reset typing animations
+						const typingContainer = element.querySelector(".typing-container");
+						if (typingContainer) {
+							typingContainer.classList.remove("active");
+						}
+						
+						// Reset sprite animations
+						animationConfig.sprite.forEach(spriteConfig => {
+							if (element.matches(spriteConfig.targetId)) {
+								const sprite = element.querySelector(spriteConfig.spriteSelector);
+								if (sprite) {
+									sprite.classList.remove(spriteConfig.class);
+								}
+							}
+						});
+					}
+				});
+			}, { threshold: 0.5 });
+			
+			// Collect all target elements to observe
+			const allTargets = [
+				...document.querySelectorAll(animationConfig.typing.targets.join(", ")),
+				...document.querySelectorAll(animationConfig.fadeIn.targets.join(", "))
+			];
+			
+			// Start observing all targets
+			allTargets.forEach(target => {
+				if (target) observer.observe(target);
 			});
-		};
+			
+			// Set up the inactivity timer for page refresh
+			let inactivityTime = 120000; // 2 minutes
+			let timeout;
 
-		// Create an IntersectionObserver instance
-		const observer = new IntersectionObserver(onIntersection, {
-			threshold: 0.5 // Trigger when 50% of the element is visible
+			function resetTimer() {
+				clearTimeout(timeout);
+				timeout = setTimeout(() => {
+					window.scrollTo(0, 0); // Scroll to top
+					location.reload(); // Refresh the page
+				}, inactivityTime);
+			}
+
+			// Reset the timer on user activity
+			["mousemove", "keypress", "scroll", "click"].forEach(event => {
+				document.addEventListener(event, resetTimer);
+			});
+			
+			// Initialize the timer
+			resetTimer();
 		});
-
-		// Observe all carousel items
-		const carouselItems = document.querySelectorAll("#carousel-02, #carousel-03, #carousel-04");
-		carouselItems.forEach(carouselItem => {
-			observer.observe(carouselItem);
-		});
-
-
-        // ************************* END ******************************************
-
-		// 0 - People Animation played when entering the section
-
-		document.addEventListener("DOMContentLoaded", () => {
-			const carousel = document.getElementById("carousel-01");
-			const sprite = document.querySelector("#carousel-01 .people-animation");
-
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					sprite.classList.add("play"); // Start animation
-				} else {
-					sprite.classList.remove("play"); // Reset so it replays next time
-				}
-				});
-			}, { threshold: 0.5 }); // Adjust threshold as needed
-
-			observer.observe(carousel);
-		});
-
-		// 1 - Brain Animation played when entering the section
-
-		document.addEventListener("DOMContentLoaded", () => {
-			const carousel = document.getElementById("carousel-02");
-			const sprite = document.querySelector("#carousel-02 .brain-animation");
-
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					sprite.classList.add("play"); // Start animation
-				} else {
-					sprite.classList.remove("play"); // Reset so it replays next time
-				}
-				});
-			}, { threshold: 0.5 }); // Adjust threshold as needed
-
-			observer.observe(carousel);
-		});
-
-		// 2 - Building Animation played when entering the section
-
-		document.addEventListener("DOMContentLoaded", () => {
-			const carousel = document.getElementById("carousel-03");
-			const sprite = document.querySelector("#carousel-03 .building-animation");
-
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					sprite.classList.add("play"); // Start animation
-				} else {
-					sprite.classList.remove("play"); // Reset so it replays next time
-				}
-				});
-			}, { threshold: 0.5 }); // Adjust threshold as needed
-
-			observer.observe(carousel);
-		});
-
-		// 3 - Building & Robots Animation played when entering the section
-
-		document.addEventListener("DOMContentLoaded", () => {
-			const carousel = document.getElementById("carousel-04");
-			const sprite = document.querySelector("#carousel-04 .building-robot-animation");
-
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					sprite.classList.add("play"); // Start animation
-				} else {
-					sprite.classList.remove("play"); // Reset so it replays next time
-				}
-				});
-			}, { threshold: 0.5 }); // Adjust threshold as needed
-
-			observer.observe(carousel);
-		});
-
-
-		// Section 12 - Carousel 7
-		document.addEventListener("DOMContentLoaded", function () {
-			const textElements = document.querySelectorAll("#carousel-7 .carousel-text");
-
-			const observer = new IntersectionObserver(
-				(entries) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add("fade-in");
-						}
-					});
-				},
-				{ threshold: 0.3 }
-			);
-
-			textElements.forEach((element) => observer.observe(element));
-		});
-
-		// Video Fade-In Animation
-		document.addEventListener("DOMContentLoaded", function () {
-			const textElements = document.querySelectorAll("#carousel-video .carousel-text-video");
-
-			const observer = new IntersectionObserver(
-				(entries) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add("fade-in");
-						}
-					});
-				},
-				{ threshold: 0.3 }
-			);
-
-			textElements.forEach((element) => observer.observe(element));
-		});
-
-		// Script to refresh the site and go on the top of the page - when user is inactive for 2 minutes
-
-		let inactivityTime = 120000; // 2 minutes
-		let timeout;
-
-		function resetTimer() {
-			clearTimeout(timeout);
-			timeout = setTimeout(() => {
-				window.scrollTo(0, 0); // Scroll to top
-				location.reload(); // Refresh the page
-			}, inactivityTime);
-		}
-
-		// Reset the timer on user activity
-		document.addEventListener("mousemove", resetTimer);
-		document.addEventListener("keypress", resetTimer);
-		document.addEventListener("scroll", resetTimer);
-		document.addEventListener("click", resetTimer);
-
-		document.addEventListener("DOMContentLoaded", resetTimer);
 	</script>
 </body>
 </html>
