@@ -1137,6 +1137,44 @@
 			// Initialize the timer
 			resetTimer();
 		});
+
+		// Add keyboard event listener to enable arrow key navigation
+		document.addEventListener("keydown", function(event) {
+			const carousel = document.getElementById("carousel");
+			const items = document.querySelectorAll(".carousel-item");
+			
+			// Get currently visible slide
+			let currentIndex = 0;
+			let minDistance = Infinity;
+			
+			// Find which slide is most visible (closest to viewport)
+			items.forEach((item, index) => {
+				const rect = item.getBoundingClientRect();
+				const distance = Math.abs(rect.top);
+				
+				if (distance < minDistance) {
+					minDistance = distance;
+					currentIndex = index;
+				}
+			});
+			
+			// Handle arrow key navigation
+			if (event.key === "ArrowDown" || event.key === "Down") {
+				event.preventDefault(); // Prevent default scrolling behavior
+				
+				// Move to next slide if possible
+				if (currentIndex < items.length - 1) {
+					items[currentIndex + 1].scrollIntoView({ behavior: "smooth" });
+				}
+			} else if (event.key === "ArrowUp" || event.key === "Up") {
+				event.preventDefault(); // Prevent default scrolling behavior
+				
+				// Move to previous slide if possible
+				if (currentIndex > 0) {
+					items[currentIndex - 1].scrollIntoView({ behavior: "smooth" });
+				}
+			}
+		});
 	</script>
 </body>
 </html>
